@@ -1,0 +1,746 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Biopsychology Practical Notes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Caveat:wght@600&display=swap">
+<style>
+/* Layout: sticky tab strip over one "sheet" at a time, like flipping journal pages. Periwinkle ruled-paper palette taken from the journal itself, red teacher's pen for traps. */
+:root{
+  --paper:#eceffc; --card:#f8f9ff; --ink:#1b2150; --muted:#566090; --line:#c8cff0;
+  --accent:#2c3fa6; --accent-ink:#ffffff; --pen:#bf2630; --good:#1b7a52; --mark:#fff0a8;
+  --c-epq:#6b3fb0; --c-pgi:#0f7c80; --c-ppsi:#b0670d; --c-x:#b8325a;
+  --font-d:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --font-b:'Source Sans 3','Segoe UI',system-ui,sans-serif;
+  --font-h:'Caveat','Segoe Print',cursive;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#11142b; --card:#1a1e3d; --ink:#e7e9ff; --muted:#9ea6d9; --line:#2d3466;
+  --accent:#90a0ff; --accent-ink:#11142b; --pen:#ff8087; --good:#5fd3a2; --mark:#4d4212;
+  --c-epq:#b995f2; --c-pgi:#55d1d4; --c-ppsi:#f0b062; --c-x:#f58aab; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#11142b; --card:#1a1e3d; --ink:#e7e9ff; --muted:#9ea6d9; --line:#2d3466;
+  --accent:#90a0ff; --accent-ink:#11142b; --pen:#ff8087; --good:#5fd3a2; --mark:#4d4212;
+  --c-epq:#b995f2; --c-pgi:#55d1d4; --c-ppsi:#f0b062; --c-x:#f58aab; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-b);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:10}
+.wrap{max-width:880px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-d);line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:1.45rem;margin-bottom:10px}
+h3{font-size:1.05rem;margin:0 0 6px;letter-spacing:.01em}
+p{margin:0 0 10px}
+ul,ol{margin:0 0 10px;padding-left:1.3em}
+li{margin-bottom:4px}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+mark{background:var(--mark);color:inherit;padding:0 2px;border-radius:2px}
+.muted{color:var(--muted)}
+.label{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+
+/* header + tabs */
+.top{padding-top:20px;padding-bottom:6px}
+.top h1{font-size:clamp(1.6rem,5vw,2.3rem);font-weight:800}
+.top p{color:var(--muted);margin:4px 0 0}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px))}
+.nav-in{max-width:880px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+.nav a{flex:0 0 auto;text-decoration:none;color:var(--ink);font-weight:600;font-size:.9rem;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);white-space:nowrap}
+.nav a[aria-current="page"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.nav a i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--dot,var(--muted))}
+.nav a[aria-current="page"] i{outline:2px solid var(--accent-ink)}
+
+/* sheets */
+.sheet{padding-top:20px}
+.sheet[hidden]{display:none!important}
+.head{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.stamp{flex:0 0 auto;border:2px solid var(--col,var(--accent));color:var(--col,var(--accent));border-radius:10px;padding:6px 10px;text-align:center;font-family:var(--font-d);font-weight:800;line-height:1}
+.stamp small{display:block;font-size:.6rem;letter-spacing:.1em;font-family:var(--font-b);font-weight:700;margin-bottom:3px}
+.stamp b{font-size:1.7rem}
+.head h2{margin-bottom:4px;font-size:1.7rem}
+.head p{margin:0;color:var(--muted)}
+.order{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 16px;padding:0;list-style:none}
+.order li{margin:0;font-size:.8rem;font-weight:600;padding:4px 9px;border-radius:99px;background:var(--card);border:1px solid var(--line)}
+.order li:not(:last-child)::after{content:" →";color:var(--muted)}
+
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px;min-width:0}
+.box.plain{background:transparent;border-style:dashed}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.grid2>.box{margin-bottom:0}
+.say{border-left:4px solid var(--col,var(--accent));background:var(--card);padding:12px 16px;border-radius:0 12px 12px 0;font-size:1.02rem;margin-bottom:14px}
+.say p:last-child{margin:0}
+.pen{font-family:var(--font-h);font-size:1.28rem;line-height:1.25;color:var(--pen);border:1.5px dashed var(--pen);border-radius:10px;padding:8px 12px;margin-bottom:14px;background:transparent}
+.pen b{font-weight:600}
+.tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px;background:var(--col,var(--accent));color:var(--accent-ink);vertical-align:middle}
+.tbl{overflow-x:auto;margin-bottom:14px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:.95rem;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);text-align:center}
+th:last-child,td:last-child{border-right:0}
+tr:last-child td{border-bottom:0}
+th{font-family:var(--font-d);font-weight:600;background:color-mix(in srgb,var(--col,var(--accent)) 12%,var(--card))}
+td.l,th.l{text-align:left}
+tr.sum td{font-weight:700;background:color-mix(in srgb,var(--col,var(--accent)) 7%,var(--card))}
+caption{caption-side:top;text-align:left;font-weight:600;padding:8px 10px;font-size:.9rem;color:var(--muted)}
+.hide .v{color:transparent;background:repeating-linear-gradient(0deg,transparent 0 17px,var(--line) 17px 18px);user-select:none}
+.sw{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-weight:600}
+.sw input{width:20px;height:20px;accent-color:var(--accent)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 6px 4px;margin-bottom:14px}
+.chart svg{width:100%;height:auto;display:block}
+.chart figcaption{font-size:.85rem;color:var(--muted);padding:0 10px 8px}
+.chart text{fill:var(--muted);font-family:var(--font-b);font-size:11px}
+.chart .ax{stroke:var(--muted);stroke-width:1}
+.chart .gr{stroke:var(--line);stroke-width:1}
+.chart .ln{fill:none;stroke:var(--col);stroke-width:2.5;stroke-linejoin:round}
+.chart .dt{fill:var(--col);stroke:var(--card);stroke-width:2}
+.chart .vl{fill:var(--ink);font-weight:700;font-size:11px}
+.shapes{display:grid;grid-template-columns:auto repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card);margin-bottom:14px;max-width:460px}
+.shapes>div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px;display:flex;align-items:center;justify-content:center;gap:4px;min-height:74px;font-size:.85rem}
+.shapes>.h{background:color-mix(in srgb,var(--col) 12%,var(--card));font-weight:700;min-height:0;padding:6px 8px;font-family:var(--font-d)}
+.shapes svg{width:54px;height:54px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round}
+.shapes svg.sm{width:34px;height:34px}
+.pegs{max-width:360px}
+.pegs svg{width:100%;height:auto}
+.pegs text{fill:var(--muted);font-size:11px;font-family:var(--font-b)}
+.pegs .pg{fill:var(--c-pgi);opacity:.85}
+.pegs .bd{fill:var(--line)}
+
+/* details / viva */
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:8px}
+summary{cursor:pointer;padding:11px 14px;font-weight:600;list-style:none;display:flex;gap:10px;align-items:flex-start}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"Q";flex:0 0 auto;font-family:var(--font-d);font-weight:800;color:var(--col,var(--accent));width:1.2em}
+details[open] summary{border-bottom:1px dashed var(--line)}
+details>div{padding:10px 14px 4px 38px}
+.vbar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:12px}
+button{font:inherit;font-weight:600;padding:8px 14px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer}
+button:hover{background:var(--accent);color:var(--accent-ink)}
+.bars{display:grid;gap:8px;margin:8px 0 4px}
+.bar{display:grid;grid-template-columns:minmax(120px,40%) 1fr auto;gap:10px;align-items:center;font-size:.92rem}
+.bar span.t{height:14px;border-radius:7px;background:var(--accent);display:block}
+.bar b{font-variant-numeric:tabular-nums}
+.cd{font-family:var(--font-d);font-size:2rem;font-weight:800;line-height:1}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0}
+.kv dt{font-weight:700;color:var(--muted)}
+.kv dd{margin:0}
+.sec{margin:22px 0 10px;font-family:var(--font-d);font-size:1.15rem;font-weight:800;color:var(--col,var(--accent));border-bottom:2px solid var(--col,var(--accent));padding-bottom:3px}
+@media (max-width:520px){.bar{grid-template-columns:1fr auto}.bar span.t{grid-column:1/-1;order:3}details>div{padding-left:14px}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.tbl.wide.mega table{min-width:900px;font-size:.9rem}
+.tbl.wide.mega th,.tbl.wide.mega td{white-space:normal;vertical-align:top;text-align:left;min-width:230px}
+.tbl.wide.mega th:first-child{min-width:120px;position:sticky;left:0;background:var(--card);z-index:1}
+.tbl.wide.mega tr:first-child th{background:color-mix(in srgb,var(--col,var(--accent)) 14%,var(--card))}
+
+.sheet[data-x="pgi"]{--col:var(--c-pgi)}
+.sheet[data-x="ppsi"]{--col:var(--c-ppsi)}
+.sheet[data-x="epq"]{--col:var(--c-epq)}
+.tbl.wide table{min-width:760px;font-size:.88rem}
+.tbl.wide th,.tbl.wide td{padding:6px 8px;white-space:nowrap}
+.tbl table{white-space:normal}
+.quad{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);max-width:640px;margin-bottom:14px}
+.quad>div{padding:10px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+.quad>.qax{grid-column:1/-1;text-align:center;font-family:var(--font-d);font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;background:color-mix(in srgb,var(--col,var(--accent)) 12%,var(--card));border-right:0}
+.quad>.qax:last-child{border-bottom:0}
+.quad>.r{border-right:0}
+.quad .qn{font-family:var(--font-d);font-weight:800;color:var(--col,var(--accent));display:block;margin-bottom:2px}
+.quad .qs{font-size:.78rem;color:var(--muted);display:block;margin-bottom:4px}
+.quad .qt{font-size:.92rem;line-height:1.4}
+</style>
+<div class="wrap">
+<header class="top">
+  <h1>Biopsychology Practical Notes</h1>
+  <p>PGIMS, PPSI and EPQ. Method, theory and scripts come from your journal. All scores and discussions here are sample data for practice.</p>
+</header>
+</div>
+
+<nav class="nav" aria-label="Sheets"><div class="nav-in" id="tabs">
+  <a href="#overview">Overview</a>
+  <a href="#pgims" style="--dot:var(--c-pgi)"><i></i>PGIMS</a>
+  <a href="#ppsi" style="--dot:var(--c-ppsi)"><i></i>PPSI</a>
+  <a href="#epq" style="--dot:var(--c-epq)"><i></i>EPQ</a>
+  <a href="#verbal">Verbal instructions</a>
+  <a href="#viva">Viva</a>
+  <a href="#discussion">Common discussion</a>
+  <a href="#tables">Table formats</a>
+  <a href="#mega">Mega table</a>
+</div></nav>
+
+<main class="wrap">
+
+<!-- ============ OVERVIEW ============ -->
+<section class="sheet" id="overview">
+  <div class="grid2" style="margin-bottom:14px">
+    <div class="box">
+      <div class="label">Practical exam</div>
+      <div style="font-weight:700;font-size:1.1rem">Monday 2 November</div>
+      <div class="cd" id="cd">&nbsp;</div>
+      <div class="muted" id="cdsub"></div>
+    </div>
+    <div class="box">
+      <div class="label">Marks</div>
+      <p style="margin:0">The marks breakup for this exam was not given. These notes use the same sheets as the Cognitive practical: plan and procedure, verbal instructions, viva and common discussion. Tell me if the split is different.</p>
+    </div>
+  </div>
+
+  <h2>The three experiments at a glance</h2>
+  <div class="tbl"><table>
+    <tr><th class="l">Test</th><th class="l">What it measures</th><th class="l">Response</th><th class="l">Score chain</th><th class="l">Sample result</th></tr>
+    <tr><td class="l"><b>PGIMS</b><br><span class="muted">journal Expt. 2</span></td><td class="l">Memory dysfunction across 10 sub-tests</td><td class="l">Oral answers, drawing, recognition</td><td class="l">Raw → converted score → dysfunction rating (0 to 3 each, max 30)</td><td class="l">Total rating 4 of 30, dysfunction in delayed recall and visual retention</td></tr>
+    <tr><td class="l"><b>PPSI</b><br><span class="muted">journal Expt. 5</span></td><td class="l">Physiological (Part I) and psychological (Part II) dysfunction</td><td class="l">Often, Sometimes, Seldom, Never</td><td class="l">Raw − constant → final score → sten and percentile; CSS = 4</td><td class="l">Sten 6 (Part I), 5 (Part II), both above CSS</td></tr>
+    <tr><td class="l"><b>EPQ</b><br><span class="muted">journal Expt. 1</span></td><td class="l">Psychoticism, extraversion, neuroticism, lie score</td><td class="l">YES or NO to 90 items</td><td class="l">Raw → sten → centile → Low / Avg / High</td><td class="l">S1: E High, P, N and L Average. Group n = 10</td></tr>
+  </table></div>
+
+  <h2>Order in your journal</h2>
+  <p>Each sheet follows the headings your journal actually has. A heading your journal does not have is not shown. Theory comes first for all three.</p>
+  <div class="tbl"><table>
+    <tr><th class="l">Test</th><th class="l">Headings, in order</th></tr>
+    <tr><td class="l"><b>PGIMS</b></td><td class="l">Aim, Plan, Materials, Procedure (includes the special care), Instructions, Scoring and interpretation, Table, Individual discussion, Conclusion</td></tr>
+    <tr><td class="l"><b>PPSI</b></td><td class="l">Aim, Materials, Procedure, Instructions, Scoring, Table, Individual discussion, Conclusion</td></tr>
+    <tr><td class="l"><b>EPQ</b></td><td class="l">Aim, Plan, Materials, Instructions, Recording of data, Scoring, Interpretation, Table, Individual and group discussion, Conclusion</td></tr>
+  </table></div>
+  <div class="grid2">
+    <div class="box"><h3>Verbal instructions</h3><p>The scripts for all three tests, word for word, with the notes your journal gives.</p></div>
+    <div class="box"><h3>Viva</h3><p>About 55 questions. Answer aloud, then open each one.</p></div>
+    <div class="box"><h3>Common discussion</h3><p>A 7-part skeleton and a model paragraph for each test, with the wording for percentile and sten.</p></div>
+  </div>
+
+  <h2 style="margin-top:22px">Sample data, and what to check</h2>
+  <div class="pen"><b>Sample data:</b> every score here is invented. In the exam use your own data and keep the sentence structure. For EPQ, the raw to sten pairs in the sample table come from your journal's group table, so they are real norm pairs.</div>
+  <div class="pen"><b>EPQ lie score (p.9):</b> your journal says the lie score "can be taken at face value" and then that social desirability "has influenced" the responses. These point in opposite directions. An average lie score means the answers can be taken at face value. A high lie score means social desirability may have influenced them. The notes here use that rule.</div>
+  <div class="pen"><b>EPQ p.5:</b> "some degree of psychotherapy" should read psychopathy (anti-social, impulsive behaviour, egocentrism, no guilt).</div>
+  <div class="pen"><b>EPQ group (pp.9 to 10):</b> "out of 100 groups" should be "out of 100 people". The group sten of 4.6 is the sten total (60) divided by 13, counting the two raw-0 subjects as 0. Dividing by the 11 who have a sten gives 5.5. Check which method your teacher expects.</div>
+  <div class="pen"><b>PGIMS rating table (p.15):</b> your journal shows only ratings 3, 2 and 0 for converted scores 0 to 2, 3 to 4 and 5 or more. Check the manual in case there is a rating 1.</div>
+  <div class="pen"><b>PGIMS attention and concentration (p.17):</b> the discussion says "twelve sets of 8-digit numbers backwards" for a score of 16, while the instructions describe digits forward and backward. Check the manual before you write it.</div>
+  <div class="pen"><b>PPSI CSS (p.35):</b> the footnote says a sten below 4 is serious, but the discussion treats a sten equal to 4 as borderline. Check how the manual treats exactly 4.</div>
+  <div class="pen"><b>PPSI p.33:</b> "impaired reality testing" sits next to "do not confuse their morbid subjective experiences with external reality", which describes intact reality testing. Check whether it should read unimpaired.</div>
+  <div class="pen"><b>No group tables:</b> your journal has group data only for the EPQ. For PGIMS and PPSI, if a group is asked, follow the EPQ group layout: one row per subject, then Total and Mean.</div>
+</section>
+
+<!-- ============ PGIMS ============ -->
+<section class="sheet" id="pgims" data-x="pgi" hidden>
+  <div class="head"><div class="stamp"><small>EXPT</small><b>2</b></div>
+    <div><h2>PGI Memory Scale (PGIMS)</h2><p>Part of the PGI Battery of Brain Dysfunction. Journal pp. 11 to 18.</p></div></div>
+  <ul class="order"><li>Aim</li><li>Plan</li><li>Materials</li><li>Procedure</li><li>Instructions</li><li>Scoring and interpretation</li><li>Table</li><li>Discussion</li></ul>
+
+  <div class="sec">Theory (introduction)</div>
+  <div class="box">
+    <ul>
+      <li><b>Neuropsychology</b> has been one of the fastest growing domains in psychology since the mid-20th century. Investigations assess structural and functional pathology through radio-diagnostic procedures, and neuropsychological batteries help treatment and rehabilitation.</li>
+      <li>Neuropsychological tests are better than brain scans <mark>financially</mark> and in the <mark>accuracy of predicting</mark> the presence or deterioration of psycho-cognitive functioning. They also give a profile of psychological parameters, which helps classification under psychiatric or neurological conditions.</li>
+      <li><b>Halstead (1947)</b>, modified by <b>Reitan (1966)</b>, is one of the most popular and sensitive batteries, used to localise brain lesions. Its use in "difficult to diagnose" cases was not shown.</li>
+      <li>The <b>Luria-Nebraska</b> battery is comprehensive, but recent research showed limits, such as few variables to separate psychotics from brain-damaged patients.</li>
+      <li>These tests also assess normal cognitive functions such as memory, intelligence, visual organisation and perceptual-motor skills, including drawing tests. These become cues for brain damage as well.</li>
+    </ul>
+  </div>
+  <div class="tbl"><table>
+    <caption>Two approaches to diagnosing brain dysfunction</caption>
+    <tr><th class="l">Approach</th><th class="l">Based on</th><th class="l">Examples</th></tr>
+    <tr><td class="l"><b>Multi-factorial</b></td><td class="l">Differential functions of the brain</td><td class="l">Luria-Nebraska Neuropsychological Battery, NIMHANS battery of brain dysfunction</td></tr>
+    <tr><td class="l"><b>Unitary</b></td><td class="l">Functional unity of the brain</td><td class="l">Wechsler's Adult Intelligence Scale, Trail-Making Test</td></tr>
+  </table></div>
+
+  <div class="sec">PGI Battery of Brain Dysfunction (PGI-BBD)</div>
+  <div class="box">
+    <p>Developed by the Department of Psychiatry, <mark>Post-Graduate Institute of Medical Education and Research, Chandigarh</mark>. Five sub-tests, 19 variables.</p>
+    <div class="tbl" style="margin-bottom:10px"><table>
+      <tr><th class="l">Sub-test</th><th>Variables</th></tr>
+      <tr><td class="l">PGI Memory Scale (PGIMS)</td><td>10</td></tr>
+      <tr><td class="l">Battery of Performance Tests of Intelligence</td><td>2</td></tr>
+      <tr><td class="l">Verbal Adult Intelligence Scale (VAIS)</td><td>5</td></tr>
+      <tr><td class="l">Nahor-Benson Test (NBT)</td><td>1</td></tr>
+      <tr><td class="l">Bender Visual Motor Gestalt Test (BVMGT)</td><td>1</td></tr>
+    </table></div>
+    <ul>
+      <li>Standardised on adult males and females, literate and illiterate, aged <mark>20 to 45 years</mark> (can be extended to 50).</li>
+      <li>Takes about <mark>90 to 120 minutes</mark>. Scoring may take 30 minutes at first and 5 to 7 minutes with experience.</li>
+      <li>Measures intelligence (verbal and non-verbal), memory, perceptual activity and transference from one hemisphere to the other.</li>
+    </ul>
+    <div class="label">Used for</div>
+    <ol>
+      <li>Clinical purposes: diagnosis or assessment of schizophrenia, epilepsy, mania, head injury, substance abuse.</li>
+      <li>Evaluating loss or decline in cognitive functions.</li>
+      <li>Planning a rehabilitation strategy.</li>
+      <li>Helping the judiciary decide about compensation.</li>
+      <li>Planning treatment or training.</li>
+      <li>Evaluating outcome or effectiveness of treatment.</li>
+    </ol>
+  </div>
+
+  <div class="sec">The PGI Memory Scale</div>
+  <div class="box">
+    <p>Memory is believed to be a function of the <mark>temporal cerebral cortex</mark>: left for verbal and right for non-verbal. PGIMS gives a comprehensive and simple measure of:</p>
+    <ul>
+      <li>verbal and non-verbal memory, on neurological theory;</li>
+      <li>short-term and long-term memory, on experimental evidence;</li>
+      <li>remote, recent and immediate memory, on clinical practice.</li>
+    </ul>
+    <p style="margin:0">Correlation with Boston's Memory Scale is <b>0.71</b> and with Wechsler's Memory Scale <b>0.85</b>. It has satisfactory cross-validity and gives quantile norms and a profile. Separate norms exist for three education levels: <b>0 to 5, 6 to 9, and 10 and above</b> years of schooling.</p>
+  </div>
+  <div class="tbl"><table>
+    <caption>The 10 sub-tests</caption>
+    <tr><th>No.</th><th class="l">Sub-test</th><th class="l">What the subject does</th></tr>
+    <tr><td>I</td><td class="l">Remote memory</td><td class="l">Answers questions related to their own life</td></tr>
+    <tr><td>II</td><td class="l">Recent memory</td><td class="l">Answers questions related to their life, about the recent past</td></tr>
+    <tr><td>III</td><td class="l">Mental balance</td><td class="l">Recites the alphabet, counts backwards, subtracts 3 from 40 with rules</td></tr>
+    <tr><td>IV</td><td class="l">Attention and concentration</td><td class="l">Repeats sets of numbers forward and backward</td></tr>
+    <tr><td>V</td><td class="l">Delayed recall</td><td class="l">Hears names of objects, repeats them in the same order after an interval</td></tr>
+    <tr><td>VI</td><td class="l">Immediate recall</td><td class="l">Hears short sentences, repeats each one precisely</td></tr>
+    <tr><td>VII</td><td class="l">Verbal retention, similar pairs</td><td class="l">Hears word pairs, gives the second word when the first is named</td></tr>
+    <tr><td>VIII</td><td class="l">Verbal retention, dissimilar pairs</td><td class="l">Same task with unrelated word pairs</td></tr>
+    <tr><td>IX</td><td class="l">Visual retention</td><td class="l">Looks at a card, then draws it from memory</td></tr>
+    <tr><td>X</td><td class="l">Recognition</td><td class="l">Sees a card of 10 objects, then picks them out from a card of 20</td></tr>
+  </table></div>
+
+  <div class="sec">Aim, plan, materials</div>
+  <div class="grid2">
+    <div class="box"><div class="label">Aim</div><p>To assess the level of dysfunction in the subject using the PGI Memory Scale sub-test of the PGI Battery of Brain Dysfunction.</p></div>
+    <div class="box"><div class="label">Plan</div><p>To administer the PGI Memory Scale to the subject, score it, and interpret the level of dysfunction using the scoring key and norms.</p></div>
+  </div>
+  <div class="box" style="margin-top:14px"><div class="label">Materials</div><ol>
+    <li>Memory test proforma containing items for the 10 sub-tests.</li>
+    <li>A set of <b>5 cards</b> for visual retention (sub-test IX).</li>
+    <li>A set of <b>2 cards</b>: one with pictures of 10 common objects, the second with pictures of 20 common objects for recognition (sub-test X).</li>
+    <li>A stop-clock.</li>
+  </ol></div>
+  <div class="label">Visual retention cards (sub-test IX), as drawn in your journal</div>
+  <div class="tbl" style="max-width:520px"><table>
+    <tr><th>Card</th><th class="l">Design</th><th>Score</th></tr>
+    <tr><td>1</td><td class="l">+ − + − +</td><td>2</td></tr>
+    <tr><td>2</td><td class="l">○ △ ○ △ ○ △</td><td>2</td></tr>
+    <tr><td>3</td><td class="l">◇ ▭ ◇ ▭ ◇ ▭</td><td>2</td></tr>
+    <tr><td>4</td><td class="l">○ = ✕ ○ = ✕</td><td>3</td></tr>
+    <tr><td>5</td><td class="l">boxed diamond, △, +, △, boxed diamond</td><td>4</td></tr>
+    <tr class="sum"><td colspan="2">Total</td><td>13</td></tr>
+  </table></div>
+
+  <div class="sec">Procedure</div>
+  <div class="box">
+    <ol>
+      <li>Seat the subject comfortably in a <b>well-ventilated and well-lit room</b>. Establish rapport.</li>
+      <li>Present sub-tests <b>I to X one by one</b> with clear instructions. Administration takes about 15 to 20 minutes.</li>
+      <li>Follow the broad hints of administration in the test blanks.</li>
+      <li>Special care: reliability of responses on the first 2 sub-tests; the <b>rate of presentation</b> of digits, words and pairs on sub-tests IV, V, VII and VIII; and the <b>interval</b> between presenting material and asking for recall.</li>
+      <li>Score the responses and interpret dysfunction using the norms.</li>
+    </ol>
+  </div>
+  <div class="label">Instructions to the subject (journal p.15 and p.16)</div>
+  <div class="say"><p><b>I and II, Remote and Recent memory:</b> "Here are two sub-tests with questions related to your life, you should try to answer all of them with as much accuracy as possible."</p>
+  <p><b>III, Mental balance:</b> "I am going to ask you to perform a few tasks like reciting alphabets or counting numbers with certain rules. You have to do the same with the best of your effort."</p>
+  <p><b>IV, Attention and concentration.</b> Forward: "I am going to call out sets of numbers, listen to them carefully and repeat them in the same order as I presented it to you." Backward: "I am going to call out sets of numbers, listen to them carefully and repeat them backward. E.g.: if I say 2, 5 you must say 5, 2."</p>
+  <p><b>V, Delayed recall:</b> "I am going to read the names of some objects, listen carefully, and when I ask you to repeat, you should do so in the same order."</p>
+  <p><b>VI, Immediate recall:</b> "I am going to read a few small sentences one by one, listen carefully, because when I am done, I would like you to tell me the whole sentence as precisely as you can."</p>
+  <p><b>VII, Similar pairs:</b> "I am going to read to you a list of pairs, i.e. two words at a time. Listen carefully, when I name one word of the pair, you have to tell me the second word of that pair."</p>
+  <p><b>VIII, Dissimilar pairs:</b> instructions and procedure same as above.</p>
+  <p><b>IX, Visual retention:</b> "I am going to show you a card. Observe it carefully. After some time, I will take it away, and when I ask you to draw it, you must draw it on the paper with the help of your memory."</p>
+  <p><b>X, Recognition:</b> "I will show you a card containing pictures of many objects. See the whole card attentively. After some time, I will place before you another card. From this card you will be required to identify and name the objects that you saw in the previous card."</p></div>
+
+  <div class="sec">Scoring and interpretation</div>
+  <div class="box"><ol>
+    <li>Score the responses with the help of the key and manual.</li>
+    <li>Add the total score for each sub-test.</li>
+    <li>Transcribe the total scores into a <b>converted score</b> (from the norms for the subject's education level).</li>
+    <li>Use the converted scores to get the <b>dysfunction rating</b>.</li>
+    <li>The maximum rating for each sub-test is 3, so <b>30</b> (3 × 10) for the whole PGIMS.</li>
+  </ol>
+  <div class="tbl" style="max-width:380px;margin:10px 0 0"><table>
+    <tr><th>Converted score</th><th>Dysfunction rating</th></tr>
+    <tr><td>0 to 2</td><td>3</td></tr><tr><td>3 to 4</td><td>2</td></tr><tr><td>5 or more</td><td>0</td></tr>
+  </table></div></div>
+
+  <div class="sec">Sample data and discussion</div>
+  <div class="pen">Sample data for practice. Converted scores are illustrative. In the exam read them from the manual's norm table for the subject's years of schooling. Sample raw scores stay at or below what your journal's subject reached, so none is above a possible maximum.</div>
+  <div class="tbl wide"><table>
+    <caption>Table 1. Subject's scores on the Memory Scale (sample)</caption>
+    <tr><th class="l">Sub-tests</th><th>I</th><th>II</th><th>III</th><th>IV</th><th>V</th><th>VI</th><th>VII</th><th>VIII</th><th>IX</th><th>X</th><th>Total</th></tr>
+    <tr><th class="l">Raw scores</th><td>6</td><td>4</td><td>8</td><td>14</td><td>6</td><td>10</td><td>4</td><td>12</td><td>7</td><td>9</td><td>80</td></tr>
+    <tr><th class="l">Converted scores</th><td>5+</td><td>5+</td><td>5+</td><td>5+</td><td>4</td><td>5+</td><td>5+</td><td>5+</td><td>3</td><td>5+</td><td></td></tr>
+    <tr><th class="l">Dysfunction rating</th><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>4</td></tr>
+    <tr><th class="l">Interpretation</th><td>NO</td><td>NO</td><td>NO</td><td>NO</td><td>YES</td><td>NO</td><td>NO</td><td>NO</td><td>YES</td><td>NO</td><td></td></tr>
+  </table></div>
+  <div class="box">
+    <h3>Individual discussion (sample)</h3>
+    <p>This experiment was administered on a student, S1, aged 21 years. Table 1 shows the subject's scores on the Memory Scale in 10 sub-tests:</p>
+    <p><b>(a) Remote and recent memory.</b> In the remote memory sub-test the subject answered all the questions and recalled the information related to remote memory. S1 obtained a raw score of 6 and a converted score of 5+, indicating <mark>no dysfunction</mark> with respect to remote memory. In the recent memory sub-test S1 obtained a raw score of 4 and a converted score of 5+, indicating no dysfunction with respect to recent memory.</p>
+    <p><b>(b) Mental balance.</b> S1 recited the alphabet, counted backwards and subtracted 3 from 40 with no mistakes. The raw score of 8 gives a converted score of 5+, indicating no dysfunction with respect to mental balance.</p>
+    <p><b>(c) Attention and concentration.</b> S1 repeated the digit sets correctly. The raw score of 14 gives a converted score of 5+, indicating no dysfunction with respect to attention and concentration.</p>
+    <p><b>(d) Delayed recall.</b> S1 could recall only some of the objects in the same order after the interval. The raw score of 6 gives a converted score of 4, a dysfunction rating of 2, indicating <mark>dysfunction</mark> with respect to delayed recall.</p>
+    <p><b>(e) Immediate recall.</b> S1 recalled the sentences accurately. Raw score 10, converted score 5+, no dysfunction with respect to immediate recall.</p>
+    <p><b>(f) Verbal retention, similar pairs.</b> Raw score 4, converted score 5+, no dysfunction. <b>(g) Dissimilar pairs.</b> Raw score 12, converted score 5+, no dysfunction.</p>
+    <p><b>(h) Visual retention.</b> S1 reproduced only the simpler designs correctly. The raw score of 7 gives a converted score of 3, a dysfunction rating of 2, indicating <mark>dysfunction</mark> with respect to visual retention.</p>
+    <p><b>(i) Recognition.</b> S1 identified 9 of the 10 objects seen earlier. Raw score 9, converted score 5+, no dysfunction with respect to recognition.</p>
+    <p>The total raw score is 80 and the total dysfunction rating is 4 out of a maximum of 30.</p>
+    <h3>Conclusion</h3>
+    <ul style="margin:0"><li>Subject S1 shows dysfunction in delayed recall and visual retention.</li><li>S1 does not show dysfunction in the other sub-tests of the Memory Scale.</li></ul>
+  </div>
+</section>
+
+<!-- ============ PPSI ============ -->
+<section class="sheet" id="ppsi" data-x="ppsi" hidden>
+  <div class="head"><div class="stamp"><small>EXPT</small><b>5</b></div>
+    <div><h2>Psycho-Physiological State Inventory (PPSI)</h2><p>By Sanjay Vohra. Journal pp. 31 to 37.</p></div></div>
+  <ul class="order"><li>Aim</li><li>Materials</li><li>Procedure</li><li>Instructions</li><li>Scoring</li><li>Table</li><li>Discussion</li><li>Conclusion</li></ul>
+
+  <div class="sec">Theory (introduction)</div>
+  <div class="box">
+    <h3>Mind-body relation</h3>
+    <ul>
+      <li>One's thoughts and emotions play a central role in all aspects of health. Looking after our psychological well-being can prevent medical illness and often speeds recovery.</li>
+      <li>Attitudes, beliefs and emotional states, from love and compassion to fear and anger, trigger chain reactions that affect <mark>blood chemistry, heart rate and the activity of every cell and organ</mark>, from the stomach and digestive tract to the immune system.</li>
+      <li>Many therapies use the mind-body connection: stress management, support groups, individual psychotherapy, biofeedback, hypnosis and relaxation techniques.</li>
+      <li><b>Psycho-physiological methods</b> are a subset of neuroscience methods. Many neuroscience methods are invasive. Measures include heart rate and blood pressure, and techniques such as TMS, PET, MEG, EEG, structural MRI and fMRI. Questionnaires include the Health Assessment Questionnaire, Gameplay Experience Questionnaire and Berkeley Expressivity Questionnaire.</li>
+      <li>Awareness of the mind-body connection helps with stress, weight control, smoking cessation, substance abuse, chronic pain and fatigue. It can reduce missed work, speed recovery, reduce pain, shorten hospital stays, help patients and families cope, and increase mental alertness.</li>
+    </ul>
+    <h3>About the inventory</h3>
+    <ul>
+      <li>As diagnosis and treatment of somatic disease became more precise, <b>Objective Psychological Tests (OPTs)</b> were developed to help non-psychiatric physicians define emotional states and attitudes more precisely.</li>
+      <li><b>Psychoneurotic disorders</b> are mental disorders without any demonstrable organic basis. The person may have considerable insight, does not confuse morbid subjective experiences and fantasies with external reality, behaviour stays within socially acceptable limits and personality is not disorganised. Main signs: excessive anxiety, hysterical symptoms, phobias, obsessional and compulsive symptoms, depression.</li>
+      <li>The questions come from an investigation of the psychological and physiological experiences that separate the "psychoneurotic" from the "normal" individual. They are grouped by whether they seem mainly "mental" or "physical".</li>
+      <li>Designed for <mark>late adolescents or adults of either gender</mark>. Physicians, clinicians, social workers and school psychologists use it to detect neurotic tendencies. The division lets the user see whether the main dysfunction is <mark>psychological or physiological</mark>.</li>
+      <li>The questionnaire method has limited value because there is no clear-cut clinical description of a psychoneurotic, and because of the nature of the test. An inventory built on empirical procedures with patients separates clinician-diagnosed patients from supposedly normal subjects. Depending on the subject's cooperation, it can also detect people in the normal group who might profit from psychiatric guidance or treatment.</li>
+    </ul>
+  </div>
+
+  <div class="sec">Aim, materials, procedure</div>
+  <div class="grid2">
+    <div class="box"><div class="label">Aim</div><p>To assess the presence of psychological or physiological dysfunction in the subject.</p></div>
+    <div class="box"><div class="label">Materials</div><ol><li>Psycho-Physiological State Inventory (PPSI) by Sanjay Vohra</li><li>Writing materials</li><li>Manual</li><li>Norms</li></ol></div>
+  </div>
+  <div class="box" style="margin-top:14px"><div class="label">Procedure</div>
+    <p style="margin:0">The inventory is given to the subject, who is told to read the items carefully and select one of the <b>four alternatives</b>. The subject answers the questions in <b>Part I and Part II</b>. The inventory is usually completed in <mark>20 minutes</mark>. It is scored and interpreted later.</p></div>
+  <div class="label">Instructions to the subject (journal p.35)</div>
+  <blockquote class="say" style="margin-left:0"><p>"This inventory has questions about your subjective experiences. Read each statement carefully and select responses from the four alternatives provided: 'Often', 'Sometimes', 'Seldom' and 'Never'. Make sure you select only one of the four alternatives provided. There is no right or wrong answer."</p></blockquote>
+
+  <div class="sec">Scoring</div>
+  <div class="box">
+    <p>Scoring is done with <b>stencils</b>. Add the weight for each answer as printed on the keys. Where there is no number on the key, the weight is 0 and need not be recorded.</p>
+    <ol>
+      <li>A score of <b>Part I</b> is obtained (physiological dysfunction).</li>
+      <li>A score of <b>Part II</b> is obtained (psychological dysfunction).</li>
+      <li>A <b>total score</b> is obtained (Part I + Part II).</li>
+      <li>Subtract <b>176</b> from the raw score on Part I and <b>249</b> from the raw score on Part II.</li>
+      <li>Subtract <b>425</b> from the total raw score to get the final score.</li>
+      <li>Convert each final score into its corresponding <b>sten score</b> (and percentile) from the norms.</li>
+    </ol>
+    <p style="margin:0"><b>Critical Sten Score (CSS) = 4.</b> A sten score below 4 is a "serious" case and should be referred to a clinician.</p>
+  </div>
+
+  <div class="sec">Sample data and discussion</div>
+  <div class="pen">Sample data for practice. Sten and percentile are illustrative. Read the real ones from the manual's norm table. In your journal a lower sten and percentile mean more dysfunction.</div>
+  <div class="tbl" style="max-width:520px"><table>
+    <caption>Table 1. Subject's scores on Part I and Part II of PPSI (sample A)</caption>
+    <tr><th class="l"></th><th>Part I</th><th>Part II</th><th>Total</th></tr>
+    <tr><th class="l">Raw score</th><td>294</td><td>315</td><td>609</td></tr>
+    <tr><th class="l">Constant (subtract)</th><td>176</td><td>249</td><td>425</td></tr>
+    <tr><th class="l">Final score</th><td>118</td><td>66</td><td>184</td></tr>
+    <tr><th class="l">Sten score</th><td>6</td><td>5</td><td>6</td></tr>
+    <tr><th class="l">Percentile</th><td>55</td><td>42</td><td>52</td></tr>
+  </table></div>
+  <p class="muted">Check: 294 + 315 = 609. 294 − 176 = 118. 315 − 249 = 66. 609 − 425 = 184 = 118 + 66.</p>
+  <div class="box">
+    <h3>Individual discussion (sample A)</h3>
+    <p>This test was administered to a female student, S1, aged 21 years. Table 1 shows the subject's scores on Part I and Part II on the Psycho-Physiological State Inventory.</p>
+    <p><b>Part I (physiological dysfunction).</b> S1 has a raw score of 294, a final score of 118, a sten score of 6 and a percentile rank of 55. The sten score is <mark>above the CSS of 4</mark> and indicates <i>[add the manual's descriptor for this sten]</i>. The percentile rank of 55 shows that in a group of 100 people, 45 people experience less physiological dysfunction than the subject and 54 experience more.</p>
+    <p><b>Part II (psychological dysfunction).</b> S1 has a raw score of 315, a final score of 66, a sten score of 5 and a percentile rank of 42. The sten score is above the CSS of 4 and indicates <i>[manual descriptor]</i>. The percentile rank of 42 shows that in a group of 100 people, 58 experience less psychological maladjustment than the subject and 41 experience more.</p>
+    <p>Since the sten score is above the CSS in both parts, the subject does not currently require a clinician's help.</p>
+    <p><b>Overall.</b> S1 has a total raw score of 609, a final score of 184 and a sten score of 6, with a percentile of 52. Out of 100 people, 48 experience less physiological and psychological dysfunction than the subject, while 51 experience more.</p>
+    <p>Comparing Part I (sten 6) and Part II (sten 5), the subject experiences <mark>slightly more psychological dysfunction than physiological dysfunction</mark>, since the lower sten shows more dysfunction.</p>
+    <h3>Conclusion</h3>
+    <ul style="margin:0"><li>Subject S1 experiences slightly more psychological dysfunction than physiological dysfunction.</li><li>Overall, the subject does not require professional help in either physiological or psychological states.</li></ul>
+  </div>
+  <div class="tbl" style="max-width:520px"><table>
+    <caption>Sample B, a case below the CSS</caption>
+    <tr><th class="l"></th><th>Part I</th><th>Part II</th><th>Total</th></tr>
+    <tr><th class="l">Raw score</th><td>262</td><td>275</td><td>537</td></tr>
+    <tr><th class="l">Constant (subtract)</th><td>176</td><td>249</td><td>425</td></tr>
+    <tr><th class="l">Final score</th><td>86</td><td>26</td><td>112</td></tr>
+    <tr><th class="l">Sten score</th><td>4</td><td>3</td><td>3</td></tr>
+    <tr><th class="l">Percentile</th><td>27</td><td>12</td><td>17</td></tr>
+  </table></div>
+  <div class="box">
+    <h3>Discussion wording for sample B</h3>
+    <p><b>Part I:</b> sten 4, percentile 27. The sten is <mark>equal to the CSS</mark> (borderline). Out of 100 people, 73 experience less physiological dysfunction and 26 experience more. <b>Part II:</b> sten 3, percentile 12. The sten is <mark>below the CSS of 4</mark>, which marks a serious case. Out of 100 people, 88 experience less psychological maladjustment and 11 experience more. The subject should be <mark>referred to a clinician</mark> for counselling or psychotherapy.</p>
+    <p style="margin:0"><b>Conclusion:</b> the subject experiences more psychological than physiological dysfunction, and the Part II sten falls below the CSS, so professional help is advised.</p>
+  </div>
+</section>
+
+<!-- ============ EPQ ============ -->
+<section class="sheet" id="epq" data-x="epq" hidden>
+  <div class="head"><div class="stamp"><small>EXPT</small><b>1</b></div>
+    <div><h2>Eysenck's Personality Questionnaire (EPQ)</h2><p>H.J. Eysenck and Sybil B.G. Eysenck. Journal pp. 1 to 10.</p></div></div>
+  <ul class="order"><li>Aim</li><li>Plan</li><li>Materials</li><li>Instructions</li><li>Recording of data</li><li>Scoring</li><li>Interpretation</li><li>Tables</li><li>Discussion</li></ul>
+
+  <div class="sec">Theory (introduction)</div>
+  <div class="box">
+    <ul>
+      <li>Constructed by <mark>H.J. Eysenck and Sybil B.G. Eysenck</mark> as a development of the <b>Maudsley Personality Inventory (MPI)</b>.</li>
+      <li>Advantages over the MPI: (i) two <b>parallel forms, A and B</b>, so retesting is possible; (ii) a <b>lie scale</b> to check social desirability; (iii) items reworded to suit subjects with less than average intelligence.</li>
+      <li>In the MPI there was a small correlation between extraversion (E) and neuroticism (N). In the EPQ only suitable items were kept so the correlation is removed. Retest reliability is higher than the MPI (around 0.85), and there is direct evidence of validity.</li>
+    </ul>
+    <h3>Theoretical rationale</h3>
+    <ul>
+      <li>According to Eysenck, personality is <b>dimensional</b>. One dimension is extraversion-introversion, another is neuroticism versus normality or emotional stability. Later research added a third, <b>psychoticism</b>.</li>
+      <li>Neuroticism is closely related to the degree of liability of the <mark>autonomic nervous system</mark>. Extraversion is closely related to the balance of excitation or inhibition in the <mark>central nervous system</mark>, mediated through the <mark>reticular activating system</mark>.</li>
+      <li>Based on E and N, Eysenck plotted individuals into <b>4 quadrants</b>.</li>
+    </ul>
+  </div>
+  <div class="label">Inter-correlation of traits (as in your journal)</div>
+  <div class="quad" style="--col:var(--c-epq)">
+    <div class="qax">Neuroticism (emotionally unstable)</div>
+    <div><span class="qn">Melancholic</span><span class="qs">Introverted and neurotic</span><span class="qt">Moody, anxious, rigid, sober, pessimistic, reserved, unsociable</span></div>
+    <div class="r"><span class="qn">Choleric</span><span class="qs">Extraverted and neurotic</span><span class="qt">Touchy, restless, aggressive, excitable, changeable, impulsive, optimistic</span></div>
+    <div><span class="qn">Phlegmatic</span><span class="qs">Introverted and stable</span><span class="qt">Passive, careful, thoughtful, peaceful, controlled, reliable, calm</span></div>
+    <div class="r"><span class="qn">Sanguine</span><span class="qs">Extraverted and stable</span><span class="qt">Sociable, outgoing, talkative, responsive, easygoing, lively, carefree, leader-like</span></div>
+    <div class="qax">Emotional stability. Left side introversion, right side extraversion</div>
+  </div>
+  <div class="grid2">
+    <div class="box"><h3>Extravert</h3><p>Sociable, likes parties, has many friends, needs people to talk to and craves excitement. Likes taking chances, is generally impulsive and tends to lose temper quickly. Not always a reliable person.</p></div>
+    <div class="box"><h3>Introvert</h3><p>Quiet, retiring, introspective, fond of books rather than people. Keeps feelings under control, seldom aggressive, does not lose temper easily. Reliable, somewhat pessimistic, places great emphasis on ethical standards.</p></div>
+    <div class="box"><h3>Neuroticism</h3><p>Emotionally unstable, easily aroused, moody, touchy, anxious and restless. Also unreliable.</p></div>
+    <div class="box"><h3>Emotional stability</h3><p>Emotionally stable, less easily aroused, calm, even-tempered, carefree and reliable.</p></div>
+  </div>
+  <div class="box" style="margin-top:14px">
+    <h3>Psychoticism</h3>
+    <p>Usually characterised by loss or distortion of reality and the inability to tell reality from fantasy. A psychotic person may have disturbances in thought, emotion and motor behaviour, and delusions or hallucinations. The factor also includes some degree of <b>psychopathy</b>: anti-social and impulsive behaviour, egocentrism and absence of guilt.</p>
+    <p>Unlike E-I and N-stability, psychoticism is <mark>not a dimension with an opposite pole</mark>. It is an ingredient present in varying degrees in individuals. Eysenck (1975) lists 11 characteristics of high scorers:</p>
+    <div class="grid2" style="margin-bottom:10px">
+      <ul style="margin:0"><li>solitary, not caring for people</li><li>troublesome, not fitting in</li><li>cruel, inhuman</li><li>lack feeling, insensitive</li><li>sensation-seeking, under-aroused</li><li>hostile to others, aggressive</li></ul>
+      <ul style="margin:0"><li>like odd, unusual things</li><li>disregard danger, foolhardy</li><li>like to make fools of other people, upsetting them</li><li>opposed to accepted social customs</li><li>engage in little personal interaction, prefer "impersonal" sex</li></ul>
+    </div>
+    <p style="margin:0">Eysenck's studies suggest psychotic disorders are very different from neurotic disorders. There are different routes to each, so a person may become increasingly neurotic without being psychotic.</p>
+  </div>
+
+  <div class="sec">Aim, plan, materials</div>
+  <div class="grid2">
+    <div class="box"><div class="label">Aim</div><p>To assess the personality dimensions of the subject using Eysenck's Personality Questionnaire.</p></div>
+    <div class="box"><div class="label">Plan</div><p>To administer the EPQ to the subject and obtain scores on its various dimensions. High scores in certain dimensions require counselling.</p></div>
+  </div>
+  <div class="box" style="margin-top:14px"><div class="label">Materials</div>
+    <ol><li>The EPQ-R, which has <b>90 questions</b>: 24 for psychoticism, 21 for extraversion-introversion and 24 for neuroticism-stability. The other 21 form the <b>lie scale</b>, an inbuilt device to check answers for social desirability.</li><li>Scoring key, stencil, norms and writing materials.</li></ol>
+    <div class="tbl" style="max-width:420px;margin:8px 0 0"><table><tr><th>P</th><th>E</th><th>N</th><th>L</th><th>Total</th></tr><tr><td>24</td><td>21</td><td>24</td><td>21</td><td>90</td></tr></table></div>
+  </div>
+
+  <div class="sec">Instructions, recording, scoring</div>
+  <div class="box"><ol>
+    <li>Seat the subject comfortably and give the questionnaire. For <b>literates</b> the instructions are printed on the form. For an <b>illiterate</b> subject, read the questions out and record the answers.</li>
+    <li>Work as quickly as possible. Make sure all questions are answered.</li>
+    <li>Assure the subject of the <b>confidentiality</b> of the answers.</li>
+    <li>Take the booklet back after completion and score it.</li>
+  </ol></div>
+  <div class="label">Instructions to the subject (journal p.7)</div>
+  <blockquote class="say" style="margin-left:0"><p>"There are few questions regarding the way you feel and act. After each question, there is a space provided with options 'YES' or 'NO'. Read each question carefully and mark either 'YES' or 'NO' as your response. Do not spend too much time on any one question and give your first response."</p></blockquote>
+  <div class="grid2">
+    <div class="box"><div class="label">Recording of data</div><p style="margin:0">Identifying data and reasons for referral are noted. In clinical situations, behavioural observations about the subject's approach to the test are also noted.</p></div>
+    <div class="box"><div class="label">Scoring</div><p style="margin:0">Use the scoring key. Note the total number of scored items for psychoticism, extraversion-introversion, neuroticism-emotional stability and lie score separately. Compare them with the norms provided.</p></div>
+  </div>
+  <div class="box" style="margin-top:14px"><div class="label">Interpretation</div>
+    <p style="margin:0">The EPQ measures psychoticism, extraversion-introversion and neuroticism. <b>Neuroticism</b> is the general emotional stability of an individual and their over-responsiveness to stressful situations. <b>Extraversion-introversion</b> measures one's sociability along a continuum.</p></div>
+  <div class="label" style="margin-top:14px">How the scores relate</div>
+  <div class="tbl"><table><caption>Sten, centile and band, as they appear in your journal's EPQ tables</caption><tr><th>Sten</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><th>Centile</th><td>1.2</td><td>4</td><td>10.6</td><td>22.7</td><td>40.1</td><td>59.9</td><td>77.3</td><td>89.4</td><td>96</td><td>98.8</td></tr><tr><th>Band</th><td>Low</td><td>Low</td><td>Low</td><td>Avg</td><td>Avg</td><td>Avg</td><td>Avg</td><td>High</td><td>High</td><td>High</td></tr></table></div>
+  <p class="muted">Sten is a 1 to 10 standard score with mean 5.5 and SD 2. Centile is the share of the normal curve below that sten, so 100 × Φ((sten − 5.5) ÷ 2). This fits every value in your journal's EPQ tables. Bands in your journal: sten 1 to 3 Low, 4 to 7 Average, 8 to 10 High. A raw psychoticism score of 0 has no sten, centile or interpretation.</p>
+
+  <div class="sec">Sample data and discussion</div>
+  <div class="pen">Sample data for practice. Raw to sten pairs are taken from your journal's group table, so they are real pairs from the norms. Your journal's group table uses one norm table for the whole group, but check whether the norms differ by gender.</div>
+  <div class="tbl wide"><table><caption>Table 1. Individual scores on the four areas of EPQ (sample)</caption><tr><th rowspan="2">Name</th><th colspan="4">Psychoticism</th><th colspan="4">Extraversion</th><th colspan="4">Neuroticism</th><th colspan="4">Lie score</th></tr><tr><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th></tr><tr><td>S1</td><td>1</td><td>4</td><td>22.7</td><td>Avg</td><td>18</td><td>8</td><td>89.4</td><td>High</td><td>9</td><td>4</td><td>22.7</td><td>Avg</td><td>7</td><td>5</td><td>40.1</td><td>Avg</td></tr></table></div>
+  <div class="box">
+    <h3>Individual discussion (sample)</h3>
+    <p>This test was administered on subject S1, aged 21, who is a student. Table 1 shows the subject's data on the 4 areas measured by the EPQ:</p>
+    <p><b>(a) Psychoticism.</b> S1 has a raw score of 1 and a sten score of 4, interpreted as 'Average'. This indicates an average level of psychotic tendencies. The centile rank of 22.7 shows that out of 100 people, about 22 score lower and about 77 score higher.</p>
+    <p><b>(b) Extraversion.</b> S1 has a raw score of 18 and a sten score of 8, interpreted as '<mark>High</mark>'. This indicates that S1 is sociable and outgoing, enjoys company and craves excitement. The centile rank of 89.4 shows that out of 100 people, about 89 score lower and show lower extraversion, while about 10 score higher.</p>
+    <p><b>(c) Neuroticism.</b> S1 has a raw score of 9 and a sten score of 4, interpreted as 'Average'. This indicates emotional stability in most situations with occasional over-responsiveness to stress. The centile rank of 22.7 shows that about 22 people score lower and show lower neuroticism, while about 77 score higher.</p>
+    <p><b>(d) Lie score.</b> S1 has a raw score of 7 and a sten score of 5, interpreted as 'Average', with a centile rank of 40.1. An average lie score shows that the responses can be taken at <mark>face value</mark> and social desirability has not unduly influenced them. The other scores are therefore a valid measure of personality.</p>
+    <h3>Conclusion</h3>
+    <ul style="margin:0"><li>Subject S1 has scored 'High' on extraversion and 'Average' on psychoticism and neuroticism.</li><li>The average lie score shows the responses are not distorted by social desirability.</li></ul>
+  </div>
+  <div class="tbl wide"><table><caption>Table 2. Group data on EPQ (sample, n = 10)</caption><tr><th rowspan="2">Sl. no.</th><th rowspan="2">Subject</th><th colspan="4">Psychoticism</th><th colspan="4">Extraversion</th><th colspan="4">Neuroticism</th><th colspan="4">Lie score</th></tr><tr><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th></tr><tr><td>1</td><td>S1</td><td>1</td><td>4</td><td>22.7</td><td>Avg</td><td>18</td><td>8</td><td>89.4</td><td>High</td><td>9</td><td>4</td><td>22.7</td><td>Avg</td><td>7</td><td>5</td><td>40.1</td><td>Avg</td></tr><tr><td>2</td><td>S2</td><td>1</td><td>4</td><td>22.7</td><td>Avg</td><td>10</td><td>4</td><td>22.7</td><td>Avg</td><td>14</td><td>6</td><td>59.9</td><td>Avg</td><td>7</td><td>5</td><td>40.1</td><td>Avg</td></tr><tr><td>3</td><td>S3</td><td>4</td><td>7</td><td>77.3</td><td>Avg</td><td>16</td><td>7</td><td>77.3</td><td>Avg</td><td>9</td><td>4</td><td>22.7</td><td>Avg</td><td>9</td><td>7</td><td>77.3</td><td>Avg</td></tr><tr><td>4</td><td>S4</td><td>0</td><td>—</td><td>—</td><td>—</td><td>11</td><td>5</td><td>40.1</td><td>Avg</td><td>7</td><td>3</td><td>10.6</td><td>Low</td><td>6</td><td>5</td><td>40.1</td><td>Avg</td></tr><tr><td>5</td><td>S5</td><td>3</td><td>6</td><td>59.9</td><td>Avg</td><td>19</td><td>8</td><td>89.4</td><td>High</td><td>10</td><td>4</td><td>22.7</td><td>Avg</td><td>11</td><td>7</td><td>77.3</td><td>Avg</td></tr><tr><td>6</td><td>S6</td><td>5</td><td>8</td><td>89.4</td><td>High</td><td>8</td><td>4</td><td>22.7</td><td>Avg</td><td>15</td><td>6</td><td>59.9</td><td>Avg</td><td>12</td><td>8</td><td>89.4</td><td>High</td></tr><tr><td>7</td><td>S7</td><td>4</td><td>7</td><td>77.3</td><td>Avg</td><td>13</td><td>6</td><td>59.9</td><td>Avg</td><td>13</td><td>6</td><td>59.9</td><td>Avg</td><td>8</td><td>6</td><td>59.9</td><td>Avg</td></tr><tr><td>8</td><td>S8</td><td>1</td><td>4</td><td>22.7</td><td>Avg</td><td>4</td><td>2</td><td>4</td><td>Low</td><td>3</td><td>2</td><td>4</td><td>Low</td><td>13</td><td>8</td><td>89.4</td><td>High</td></tr><tr><td>9</td><td>S9</td><td>4</td><td>7</td><td>77.3</td><td>Avg</td><td>18</td><td>8</td><td>89.4</td><td>High</td><td>11</td><td>5</td><td>40.1</td><td>Avg</td><td>9</td><td>7</td><td>77.3</td><td>Avg</td></tr><tr><td>10</td><td>S10</td><td>0</td><td>—</td><td>—</td><td>—</td><td>10</td><td>4</td><td>22.7</td><td>Avg</td><td>9</td><td>4</td><td>22.7</td><td>Avg</td><td>7</td><td>5</td><td>40.1</td><td>Avg</td></tr><tr class="sum"><td colspan="2">Total</td><td>23</td><td></td><td></td><td></td><td>127</td><td></td><td></td><td></td><td>100</td><td></td><td></td><td></td><td>89</td><td></td><td></td><td></td></tr><tr class="sum"><td colspan="2">Mean</td><td>2.3</td><td>4.7</td><td>34.5</td><td>Avg</td><td>12.7</td><td>5.6</td><td>52</td><td>Avg</td><td>10.0</td><td>4.4</td><td>29.1</td><td>Avg</td><td>8.9</td><td>6.3</td><td>65.5</td><td>Avg</td></tr></table></div>
+  <p class="muted">Mean sten = sum of stens ÷ n. For psychoticism, P: 47 ÷ 10 = 4.7, counting raw-0 subjects as 0 as your journal does. Group centile comes from the mean sten (rounded to one decimal) on the same curve.</p>
+  <div class="box">
+    <h3>Group discussion (sample)</h3>
+    <p>This test was administered on 10 students aged 21 to 22 years. Table 2 shows the group's data on the EPQ:</p>
+    <p><b>(a) Psychoticism.</b> The group has a total raw score of 23 with a mean of 2.3. The corresponding sten score is 4.7, interpreted as 'Average' level of psychotic tendencies. The centile rank of 34.5 implies that out of 100 people, about 34 score below this group and about 65 above. Individual differences can be seen: S4, S10 have a raw score of 0 (no sten applicable, taken as no psychoticism) and S6 has 'High' psychoticism.</p>
+    <p><b>(b) Extraversion.</b> Total raw score 127, mean 12.7, sten 5.6, 'Average'. The centile rank of 52 implies that about 52 score below this group and about 47 above. Individual differences: S1, S5, S9 have 'High' extraversion and S8 has 'Low' extraversion.</p>
+    <p><b>(c) Neuroticism.</b> Total raw score 100, mean 10.0, sten 4.4, 'Average'. The centile rank of 29.1 implies that about 29 score below this group and about 70 above. Individual differences: S4, S8 show 'Low' neuroticism and no member shows 'High'.</p>
+    <p><b>(d) Lie score.</b> Total lie score 89, mean 8.9, sten 6.3, centile rank 65.5, 'Average'. The group lie score is average, so the responses can be taken at face value. S6, S8 have 'High' lie scores, so their other scores must be read with caution.</p>
+    <h3>Conclusion</h3>
+    <ul style="margin:0"><li>The group on the whole is 'Average' across all four areas.</li><li>Individual differences exist within the group.</li></ul>
+  </div>
+</section>
+
+<!-- ============ VERBAL ============ -->
+<section class="sheet" id="verbal" hidden>
+  <h2>Verbal instructions</h2>
+  <p>Learn each script word for word. The words below are from your journal.</p>
+
+  <div class="sec" style="--col:var(--c-pgi)">1. PGIMS (ten short scripts)</div>
+  <blockquote class="say" style="--col:var(--c-pgi);margin-left:0">
+    <p><b>I and II, Remote and Recent:</b> "Here are two sub-tests with questions related to your life, you should try to answer all of them with as much accuracy as possible."</p>
+    <p><b>III, Mental balance:</b> "I am going to ask you to perform a few tasks like reciting alphabets or counting numbers with certain rules. You have to do the same with the best of your effort."</p>
+    <p><b>IV, Forward:</b> "I am going to call out sets of numbers, listen to them carefully and repeat them in the same order as I presented it to you." <b>Backward:</b> "I am going to call out sets of numbers, listen to them carefully and repeat them backward. E.g.: if I say 2, 5 you must say 5, 2."</p>
+    <p><b>V, Delayed recall:</b> "I am going to read the names of some objects, listen carefully, and when I ask you to repeat, you should do so in the same order."</p>
+    <p><b>VI, Immediate recall:</b> "I am going to read a few small sentences one by one, listen carefully, because when I am done, I would like you to tell me the whole sentence as precisely as you can."</p>
+    <p><b>VII, Similar pairs:</b> "I am going to read to you a list of pairs, i.e. two words at a time. Listen carefully, when I name one word of the pair, you have to tell me the second word of that pair."</p>
+    <p><b>VIII, Dissimilar pairs:</b> same as VII.</p>
+    <p><b>IX, Visual retention:</b> "I am going to show you a card. Observe it carefully. After some time, I will take it away, and when I ask you to draw it, you must draw it on the paper with the help of your memory."</p>
+    <p><b>X, Recognition:</b> "I will show you a card containing pictures of many objects. See the whole card attentively. After some time, I will place before you another card. From this card you will be required to identify and name the objects that you saw in the previous card."</p>
+  </blockquote>
+  <p><b>From your journal:</b> well-ventilated, well-lit room, with rapport. Sub-tests I to X are presented one by one with clear instructions, in about 15 to 20 minutes. Special care goes to the first 2 sub-tests, the rate of presentation of digits, words and pairs (IV, V, VII, VIII), and the interval between presenting the material and asking for recall.</p>
+
+  <div class="sec" style="--col:var(--c-ppsi)">2. PPSI</div>
+  <blockquote class="say" style="--col:var(--c-ppsi);margin-left:0"><p>"This inventory has questions about your subjective experiences. Read each statement carefully and select responses from the four alternatives provided: 'Often', 'Sometimes', 'Seldom' and 'Never'. Make sure you select only one of the four alternatives provided. There is no right or wrong answer."</p></blockquote>
+  <p><b>From your journal:</b> the subject reads the items carefully and selects one of the four alternatives, in Part I and Part II. Usually completed in 20 minutes, then scored and interpreted.</p>
+
+  <div class="sec" style="--col:var(--c-epq)">3. EPQ</div>
+  <blockquote class="say" style="--col:var(--c-epq);margin-left:0"><p>"There are few questions regarding the way you feel and act. After each question, there is a space provided with options 'YES' or 'NO'. Read each question carefully and mark either 'YES' or 'NO' as your response. Do not spend too much time on any one question and give your first response."</p></blockquote>
+  <p><b>From your journal:</b> the subject is told to work as quickly as possible, and to make sure all questions are answered. The subject is assured of the confidentiality of the answers. For literates the instructions are printed on the form. For an illiterate subject the questions are read out and the answers recorded. The booklet is taken back after completion and scored.</p>
+</section>
+
+<!-- ============ VIVA ============ -->
+<section class="sheet" id="viva" hidden>
+  <h2>Viva</h2>
+  <p>Say the answer aloud first, then open the question. Answers that go beyond your journal are marked <span class="tag" style="--col:var(--muted)">extra</span>.</p>
+  <div class="vbar"><span class="muted">Answer in two or three sentences, then stop.</span><button type="button" id="toggleAll">Open all</button></div>
+  <div class="sec" style="--col:var(--accent)">General</div><details style="--col:var(--accent)"><summary>What is biological psychology?</summary><div><p>The application of the principles of biology to the study of mental processes and behaviour, that is, psychology in terms of bodily mechanisms. Its basic assumption is that psychological processes have biological (physiological) correlates.</p></div></details><details style="--col:var(--accent)"><summary>What is neuropsychological assessment?</summary><div><p>A comprehensive assessment of cognitive processes: attention and concentration, verbal and visual memory, visual-spatial functioning, language, executive functioning, emotional and personality development, and more.</p></div></details><details style="--col:var(--accent)"><summary>Why use neuropsychological tests when brain scans exist?</summary><div><p>Your journal gives two reasons: they are cheaper, and they predict the presence or deterioration of psycho-cognitive functioning accurately. They also give a profile of psychological parameters that helps classify a case as psychiatric or neurological.</p></div></details><details style="--col:var(--accent)"><summary>What is the biological theory of personality?</summary><div><p>Genetic makeup determines personality at least in part. Temperament, extraversion and introversion have strong biological links. Hans Eysenck is the best-known biological theorist of personality. Inheritance is only partially correct, and environment cannot be ignored.</p></div></details><details style="--col:var(--accent)"><summary>Standardised test, norms, raw score, sten, centile?</summary><div><p>A standardised test has fixed instructions and scoring. Norms are the scores of a reference group. Raw score is the number of scored items. Sten and centile show where that raw score falls against the norms. <span class="tag" style="--col:var(--muted)">extra</span></p></div></details><details style="--col:var(--accent)"><summary>Why are confidentiality and rapport important?</summary><div><p>The subject answers about personal experiences. Confidentiality and a relaxed subject give honest, reliable responses.</p></div></details><div class="sec" style="--col:var(--c-pgi)">PGIMS</div><details style="--col:var(--c-pgi)"><summary>What is the PGI Battery of Brain Dysfunction (PGI-BBD)?</summary><div><p>A neuropsychological battery developed by the Department of Psychiatry, Post-Graduate Institute of Medical Education and Research (PGIMER), Chandigarh.</p></div></details><details style="--col:var(--c-pgi)"><summary>Name its five sub-tests and variables.</summary><div><p>PGI Memory Scale (10 variables), Battery of Performance Tests of Intelligence (2), Verbal Adult Intelligence Scale (5), Nahor-Benson Test (1), Bender Visual Motor Gestalt Test (1). Total 19 variables.</p></div></details><details style="--col:var(--c-pgi)"><summary>Who was it standardised on, and how long does it take?</summary><div><p>Adult males and females, literate and illiterate, aged 20 to 45 years (usable up to 50). About 90 to 120 minutes to administer. Scoring takes about 30 minutes at first and 5 to 7 minutes with experience.</p></div></details><details style="--col:var(--c-pgi)"><summary>What does PGI-BBD measure?</summary><div><p>Intelligence (verbal and non-verbal), memory, perceptual activity and transference from one hemisphere to the other.</p></div></details><details style="--col:var(--c-pgi)"><summary>Uses of the battery?</summary><div><p>Diagnosis or assessment of schizophrenia, epilepsy, mania, head injury and substance abuse; evaluating loss or decline in cognitive functions; planning rehabilitation; helping the judiciary decide compensation; planning treatment or training; evaluating outcome of treatment.</p></div></details><details style="--col:var(--c-pgi)"><summary>Multi-factorial vs unitary approach?</summary><div><p>Multi-factorial is based on the differential functions of the brain (Luria-Nebraska, NIMHANS battery). Unitary is based on the functional unity of the brain (Wechsler Adult Intelligence Scale, Trail-Making Test).</p></div></details><details style="--col:var(--c-pgi)"><summary>Halstead-Reitan and Luria-Nebraska batteries?</summary><div><p>Halstead (1947), modified by Reitan (1966), is one of the most popular and sensitive batteries, used to localise brain lesions, though its use in difficult-to-diagnose cases was not shown. Luria-Nebraska is comprehensive, but recent research showed limits, such as too few variables to separate psychotics from brain-damaged patients.</p></div></details><details style="--col:var(--c-pgi)"><summary>What does PGIMS measure, and which brain area is linked to memory?</summary><div><p>Verbal and non-verbal memory (neurological theory), short-term and long-term memory (experimental evidence), and remote, recent and immediate memory (clinical practice). Memory is a function of the temporal cerebral cortex, left for verbal and right for non-verbal.</p></div></details><details style="--col:var(--c-pgi)"><summary>List the 10 sub-tests.</summary><div><p>I Remote memory, II Recent memory, III Mental balance, IV Attention and concentration, V Delayed recall, VI Immediate recall, VII Verbal retention for similar pairs, VIII Verbal retention for dissimilar pairs, IX Visual retention, X Recognition.</p></div></details><details style="--col:var(--c-pgi)"><summary>How reliable and valid is PGIMS?</summary><div><p>Correlation with Boston's Memory Scale is 0.71 and with Wechsler's Memory Scale 0.85 (your journal). It has satisfactory cross-validity, quantile norms and a profile.</p></div></details><details style="--col:var(--c-pgi)"><summary>Which norms are used?</summary><div><p>Separate norms for three education levels: 0 to 5, 6 to 9, and 10 and above years of schooling.</p></div></details><details style="--col:var(--c-pgi)"><summary>Explain the scoring.</summary><div><p>Score responses with the key and manual, add the score for each sub-test, convert each total to a converted score, then use that to get the dysfunction rating. Maximum rating is 3 per sub-test, so 30 for the whole scale.</p></div></details><details style="--col:var(--c-pgi)"><summary>What does a dysfunction rating of 0 mean?</summary><div><p>No dysfunction on that sub-test (converted score 5 or more).</p></div></details><details style="--col:var(--c-pgi)"><summary>Why does the examiner take special care in sub-tests IV, V, VII and VIII?</summary><div><p>Digits, words and pairs must be presented at a controlled rate, and the interval between presenting material and asking for recall must be kept the same, or the memory score is not comparable. <span class="tag" style="--col:var(--muted)">extra</span></p></div></details><details style="--col:var(--c-pgi)"><summary>Why are the first two sub-tests a concern?</summary><div><p>Remote and recent memory are answered from the subject's own life, so the examiner must be careful about the reliability of the answers.</p></div></details><div class="sec" style="--col:var(--c-ppsi)">PPSI</div><details style="--col:var(--c-ppsi)"><summary>What is the PPSI and who made it?</summary><div><p>The Psycho-Physiological State Inventory by Sanjay Vohra, an objective psychological test used to assess psychological or physiological dysfunction.</p></div></details><details style="--col:var(--c-ppsi)"><summary>What do Part I and Part II measure?</summary><div><p>Part I measures physiological dysfunction. Part II measures psychological dysfunction. The questions are grouped by whether they appear mainly physical or mental.</p></div></details><details style="--col:var(--c-ppsi)"><summary>Who can the PPSI be used with, and by whom?</summary><div><p>Late adolescents and adults of either gender. Physicians, clinicians, social workers and school psychologists use it to detect neurotic tendencies.</p></div></details><details style="--col:var(--c-ppsi)"><summary>What are the response options?</summary><div><p>Often, Sometimes, Seldom and Never. The subject chooses one of the four.</p></div></details><details style="--col:var(--c-ppsi)"><summary>How long does it take?</summary><div><p>Usually about 20 minutes.</p></div></details><details style="--col:var(--c-ppsi)"><summary>Explain the scoring steps.</summary><div><p>Use stencils and add the weight of each answer. No number on the key means weight 0. Get Part I, Part II and total raw scores. Subtract 176 from Part I and 249 from Part II. Subtract 425 from the total to get the final score. Convert it to a sten score and a percentile.</p></div></details><details style="--col:var(--c-ppsi)"><summary>Why 176, 249 and 425?</summary><div><p>They are the constants in the manual. 176 + 249 = 425, so the total constant is the sum of the two part constants.</p></div></details><details style="--col:var(--c-ppsi)"><summary>What is the Critical Sten Score (CSS)?</summary><div><p>The cut-off at 4. Per your journal, a sten below 4 is a serious case and should be referred to a clinician. Check the manual for how a sten exactly at 4 is treated.</p></div></details><details style="--col:var(--c-ppsi)"><summary>What does the percentile mean here?</summary><div><p>In your journal a lower sten and percentile mean more dysfunction. A percentile of 40 means about 60 people have less dysfunction and about 39 have more.</p></div></details><details style="--col:var(--c-ppsi)"><summary>What are psychoneurotic disorders?</summary><div><p>Mental disorders without any demonstrable organic basis. The person does not confuse morbid subjective experiences and fantasies with external reality. Behaviour stays within socially acceptable limits and personality is not disorganised. Main signs: excessive anxiety, hysterical symptoms, phobias, obsessive and compulsive symptoms, depression.</p></div></details><details style="--col:var(--c-ppsi)"><summary>Limitations of questionnaires like the PPSI?</summary><div><p>Limited value because there is no clear-cut clinical description of what a psychoneurotic is, and because of the nature of the test itself. Results depend on the subject's cooperation.</p></div></details><details style="--col:var(--c-ppsi)"><summary>How is the PPSI built?</summary><div><p>By empirical procedures with patients rather than logical ones, so it separates patients diagnosed by clinicians from supposedly normal subjects. It can also detect people in the normal group who might benefit from guidance or treatment.</p></div></details><details style="--col:var(--c-ppsi)"><summary>What is the mind-body relation?</summary><div><p>Thoughts, emotions, attitudes and beliefs affect blood chemistry, heart rate and the activity of cells and organs, from the digestive tract to the immune system. Looking after our psychological state can prevent illness and speed up recovery.</p></div></details><details style="--col:var(--c-ppsi)"><summary>Name some psycho-physiological methods.</summary><div><p>Heart rate and blood pressure; transcranial magnetic stimulation (TMS), PET, MEG, EEG, structural MRI and fMRI. Questionnaires include the Health Assessment Questionnaire, Gameplay Experience Questionnaire and Berkeley Expressivity Questionnaire.</p></div></details><details style="--col:var(--c-ppsi)"><summary>Where does awareness of the mind-body connection help?</summary><div><p>Stress, weight control, smoking cessation, substance abuse, chronic pain and fatigue. It can reduce missed work, speed recovery, reduce pain, shorten hospital stays, help patients and families cope, and raise mental alertness.</p></div></details><div class="sec" style="--col:var(--c-epq)">EPQ</div><details style="--col:var(--c-epq)"><summary>Who constructed the EPQ?</summary><div><p>H.J. Eysenck and Sybil B.G. Eysenck, as a development of the Maudsley Personality Inventory (MPI).</p></div></details><details style="--col:var(--c-epq)"><summary>Advantages of the EPQ over the MPI?</summary><div><p>It has two parallel forms, A and B, so retesting is possible. It has a lie scale to check social desirability. Items were reworded to suit subjects with less than average intelligence. Items were chosen to remove the small correlation between E and N seen in the MPI. Retest reliability is higher (around 0.85, per your journal) and there is direct evidence of validity.</p></div></details><details style="--col:var(--c-epq)"><summary>What are the dimensions?</summary><div><p>Psychoticism (P), extraversion-introversion (E), neuroticism-emotional stability (N), plus the lie scale (L).</p></div></details><details style="--col:var(--c-epq)"><summary>How many items, and how are they divided?</summary><div><p>90 items: 24 psychoticism, 21 extraversion, 24 neuroticism and 21 lie scale.</p></div></details><details style="--col:var(--c-epq)"><summary>What is the biological basis of E and N?</summary><div><p>Neuroticism is related to the liability of the autonomic nervous system. Extraversion is related to the balance of excitation and inhibition in the central nervous system, mediated by the reticular activating system.</p></div></details><details style="--col:var(--c-epq)"><summary>Describe a typical extravert.</summary><div><p>Sociable, likes parties, has many friends, needs people to talk to, craves excitement, takes chances, impulsive, loses temper quickly and is not always reliable.</p></div></details><details style="--col:var(--c-epq)"><summary>Describe a typical introvert.</summary><div><p>Quiet, retiring, introspective, fond of books rather than people, keeps feelings under control, seldom aggressive, does not lose temper easily, reliable, somewhat pessimistic, places great emphasis on ethical standards.</p></div></details><details style="--col:var(--c-epq)"><summary>Neurotic vs emotionally stable?</summary><div><p>Neurotic: emotionally unstable, easily aroused, moody, touchy, anxious, restless and unreliable. Emotionally stable: less easily aroused, calm, even-tempered, carefree and reliable.</p></div></details><details style="--col:var(--c-epq)"><summary>What is psychoticism?</summary><div><p>Loss or distortion of reality and inability to tell reality from fantasy, with disturbances in thought, emotion and motor behaviour, delusions or hallucinations. It also covers psychopathy-type traits: anti-social, impulsive, egocentric, absence of guilt.</p></div></details><details style="--col:var(--c-epq)"><summary>Is psychoticism a dimension with two poles?</summary><div><p>No. Unlike E and N it has no opposite pole in your journal; it is present in varying degrees in individuals.</p></div></details><details style="--col:var(--c-epq)"><summary>Name some features of high psychoticism (Eysenck, 1975).</summary><div><p>Solitary, troublesome, cruel, insensitive, sensation-seeking, hostile, likes odd things, disregards danger, likes upsetting others, opposed to social customs, little personal interaction. Your journal lists 11.</p></div></details><details style="--col:var(--c-epq)"><summary>Psychotic vs neurotic disorders?</summary><div><p>Eysenck's studies suggest they are very different, with different routes to each, so a person can become increasingly neurotic without being psychotic.</p></div></details><details style="--col:var(--c-epq)"><summary>Name the four temperaments in the E and N quadrants.</summary><div><p>Melancholic (introverted, neurotic), choleric (extraverted, neurotic), phlegmatic (introverted, stable), sanguine (extraverted, stable).</p></div></details><details style="--col:var(--c-epq)"><summary>What is the lie scale and how do you read it?</summary><div><p>An inbuilt device to check answers for social desirability. An average lie score means responses can be taken at face value. A high lie score means social desirability may have shaped the answers, so read the other scores with caution.</p></div></details><details style="--col:var(--c-epq)"><summary>Raw score, sten and centile in the EPQ?</summary><div><p>Raw is the number of scored items. Sten is a 1 to 10 standard score with mean 5.5 and SD 2. Centile is the percentage of the normal curve below that sten. In your journal sten 1 to 3 is Low, 4 to 7 Average, 8 to 10 High. <span class="tag" style="--col:var(--muted)">extra</span></p></div></details><details style="--col:var(--c-epq)"><summary>Why is a raw psychoticism score of 0 not converted?</summary><div><p>No sten, centile or interpretation applies to a raw score of 0. It is read as no psychoticism on the EPQ.</p></div></details><details style="--col:var(--c-epq)"><summary>How are literate and illiterate subjects handled?</summary><div><p>For literates the instructions are printed on the form. For illiterate subjects the questions are read out and the answers recorded.</p></div></details><details style="--col:var(--c-epq)"><summary>Why does the plan say high scorers need counselling?</summary><div><p>High scores on certain dimensions, such as neuroticism or psychoticism, show tendencies that counselling can help with. <span class="tag" style="--col:var(--muted)">extra</span></p></div></details>
+</section>
+
+<!-- ============ DISCUSSION ============ -->
+<section class="sheet" id="discussion" hidden>
+  <h2>Common discussion</h2>
+  <p>You write the discussion for one test. Pick the one you can explain best and learn that model until you can write it from memory with your own numbers.</p>
+  <div class="box">
+    <h3>7-part skeleton</h3>
+    <ol>
+      <li><b>Who:</b> subject code, age, student.</li>
+      <li><b>What the table shows:</b> raw score, then converted score, sten or final score, with real numbers.</li>
+      <li><b>Band or rating:</b> Low, Average, High, or dysfunction rating, or sten against the CSS.</li>
+      <li><b>Percentile or centile wording:</b> what it means for 100 people.</li>
+      <li><b>What it means:</b> one line from the test's theory.</li>
+      <li><b>Individual differences</b> (group only) and any lie-score caution.</li>
+      <li><b>Conclusion:</b> two or three bullets.</li>
+    </ol>
+  </div>
+  <div class="box">
+    <h3>Percentile wording</h3>
+    <dl class="kv">
+      <dt>EPQ centile C</dt><dd>"Out of 100 people, about C score lower and about 99 − C score higher." Example: 89.4 gives 89 lower and 10 higher.</dd>
+      <dt>PPSI percentile P</dt><dd>Your journal's rule: "(100 − P) experience less dysfunction and (P − 1) experience more." Example: 40 gives 60 less and 39 more.</dd>
+      <dt>PGIMS</dt><dd>No percentile. Use "converted score 5+ indicating no dysfunction", "converted score 4 with a rating of 2 indicating dysfunction".</dd>
+    </dl>
+  </div>
+  <div class="pen">The numbers below match the sample tables on each sheet. In the exam keep the structure and swap in your own numbers.</div>
+
+  <div class="sec" style="--col:var(--c-epq)">Model A: EPQ (group, n = 10)</div>
+  <div class="box"><p>The aim was to assess the personality dimensions of the subjects using Eysenck's Personality Questionnaire. Table 2 shows the group data of 10 students. On psychoticism the group has a total raw score of 23 with a mean of 2.3 and a sten score of 4.7, an 'Average' level. On extraversion the total is 127 with a mean of 12.7, sten 5.6 and centile 52, 'Average'. On neuroticism the total is 100 with a mean of 10.0, sten 4.4 and centile 29.1, 'Average'. The group lie score has a mean of 8.9, sten 6.3 and centile 65.5, 'Average', so the responses can be taken at face value, although S6, S8 have high lie scores and their scores need caution. Individual differences exist: S1, S5, S9 show high extraversion and S8 low extraversion, while S4, S8 show low neuroticism. The group is on the whole average across all four areas.</p></div>
+
+  <div class="sec" style="--col:var(--c-epq)">Model B: EPQ (individual)</div>
+  <div class="box"><p>Subject S1, aged 21, a student, has a raw psychoticism score of 1 (sten 4, Average), an extraversion raw score of 18 (sten 8, centile 89.4, High), a neuroticism raw score of 9 (sten 4, Average) and a lie score of 7 (sten 5, Average). S1 is sociable and outgoing and craves excitement, a typical extravert, and emotionally stable. The average lie score shows the answers can be taken at face value. The subject shows no tendency that needs counselling.</p></div>
+
+  <div class="sec" style="--col:var(--c-pgi)">Model C: PGIMS (individual)</div>
+  <div class="box"><p>Subject S1, aged 21, a student, was assessed on the 10 sub-tests of the PGI Memory Scale. S1 obtained raw scores of 6, 4, 8 and 14 on remote memory, recent memory, mental balance, and attention and concentration, each with a converted score of 5+, indicating no dysfunction. On delayed recall the raw score of 6 gave a converted score of 4 and a dysfunction rating of 2, and on visual retention the raw score of 7 gave a converted score of 3 and a rating of 2, indicating dysfunction in both. The other sub-tests show no dysfunction. The total dysfunction rating is 4 out of 30. Since memory is a function of the temporal cortex, left for verbal and right for non-verbal material, the difficulty with non-verbal visual retention and delayed recall suggests the subject needs follow-up if the trend continues.</p></div>
+
+  <div class="sec" style="--col:var(--c-ppsi)">Model D: PPSI (individual)</div>
+  <div class="box"><p>Subject S1, a 21-year-old female student, has a Part I (physiological dysfunction) final score of 118, sten 6 and percentile 55, and a Part II (psychological dysfunction) final score of 66, sten 5 and percentile 42. Both sten scores are above the CSS of 4, so the subject does not currently need a clinician's help. The percentile of 42 on Part II means 58 people experience less psychological maladjustment than S1 and 41 experience more. As a lower sten means more dysfunction, S1 experiences slightly more psychological than physiological dysfunction. Overall, with a total sten of 6, no professional help is needed.</p></div>
+
+  <div class="sec">If your results come out differently</div>
+  <div class="box">
+    <dl class="kv">
+      <dt>High lie score (EPQ)</dt><dd>"The lie score is High, which shows social desirability may have influenced the responses. The other scores should be interpreted with caution."</dd>
+      <dt>Raw psychoticism 0</dt><dd>"The subject has a raw score of 0, for which no sten score, centile or interpretation is applicable. It may be said the subject shows no psychoticism on the EPQ."</dd>
+      <dt>High neuroticism</dt><dd>"S1 is 'High' on neuroticism, so is emotionally unstable and over-responsive to stress. High scores in certain dimensions require counselling."</dd>
+      <dt>PPSI sten below 4</dt><dd>"The sten score is below the Critical Sten Score of 4, a serious case that should be referred to a clinician."</dd>
+      <dt>PPSI sten equal to 4</dt><dd>"The sten score is equal to the CSS of 4. The subject does not currently require a clinician's help but may need it in future if the trend continues."</dd>
+      <dt>PGIMS all normal</dt><dd>"Subject does not show dysfunction in any sub-test of the Memory Scale."</dd>
+      <dt>PGIMS rating 3</dt><dd>"A converted score of 0 to 2 gives a dysfunction rating of 3, the most severe level for that sub-test."</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ TABLE FORMATS ============ -->
+<section class="sheet" id="tables" hidden>
+  <h2>Table formats</h2>
+  <p>The exact table layouts from your journal, with sample numbers. Switch on practice mode to hide the numbers and redraw each table from memory.</p>
+  <label class="sw"><input type="checkbox" id="prac"> Practice mode (hide values)</label>
+  <div id="tabarea">
+  <div class="pen">The values are sample numbers. What matters is the layout, the title style ("Table 1. Shows …") and the Total and Mean rows.</div>
+
+  <div class="sec" style="--col:var(--c-pgi)">PGIMS</div>
+  <div class="tbl wide" style="--col:var(--c-pgi)"><table>
+    <caption>Table 1. Shows subject's scores of Memory Scale</caption>
+    <tr><th class="l">Sub-tests</th><th>I</th><th>II</th><th>III</th><th>IV</th><th>V</th><th>VI</th><th>VII</th><th>VIII</th><th>IX</th><th>X</th><th>Total</th></tr>
+    <tr><th class="l">Raw scores</th><td><span class="v">6</span></td><td><span class="v">4</span></td><td><span class="v">8</span></td><td><span class="v">14</span></td><td><span class="v">6</span></td><td><span class="v">10</span></td><td><span class="v">4</span></td><td><span class="v">12</span></td><td><span class="v">7</span></td><td><span class="v">9</span></td><td><span class="v">80</span></td></tr>
+    <tr><th class="l">Converted scores</th><td><span class="v">5+</span></td><td><span class="v">5+</span></td><td><span class="v">5+</span></td><td><span class="v">5+</span></td><td><span class="v">4</span></td><td><span class="v">5+</span></td><td><span class="v">5+</span></td><td><span class="v">5+</span></td><td><span class="v">3</span></td><td><span class="v">5+</span></td><td></td></tr>
+    <tr><th class="l">Dysfunction rating</th><td><span class="v">0</span></td><td><span class="v">0</span></td><td><span class="v">0</span></td><td><span class="v">0</span></td><td><span class="v">2</span></td><td><span class="v">0</span></td><td><span class="v">0</span></td><td><span class="v">0</span></td><td><span class="v">2</span></td><td><span class="v">0</span></td><td><span class="v">4</span></td></tr>
+    <tr><th class="l">Interpretation</th><td><span class="v">NO</span></td><td><span class="v">NO</span></td><td><span class="v">NO</span></td><td><span class="v">NO</span></td><td><span class="v">YES</span></td><td><span class="v">NO</span></td><td><span class="v">NO</span></td><td><span class="v">NO</span></td><td><span class="v">YES</span></td><td><span class="v">NO</span></td><td></td></tr>
+  </table></div>
+  <div class="tbl" style="--col:var(--c-pgi);max-width:380px"><table>
+    <caption>Rating key</caption>
+    <tr><th>Converted</th><th>Dysfunction rating</th></tr>
+    <tr><td>0 to 2</td><td>3</td></tr><tr><td>3 to 4</td><td>2</td></tr><tr><td>5+</td><td>0</td></tr>
+  </table></div>
+
+  <div class="sec" style="--col:var(--c-ppsi)">PPSI</div>
+  <div class="tbl" style="--col:var(--c-ppsi);max-width:520px"><table>
+    <caption>Table 1. Shows subject's scores on Part I and Part II of PPSI</caption>
+    <tr><th class="l"></th><th>Part I</th><th>Part II</th><th>Total</th></tr>
+    <tr><th class="l">Raw score</th><td><span class="v">294</span></td><td><span class="v">315</span></td><td><span class="v">609</span></td></tr>
+    <tr><th class="l">Constant (subtract)</th><td><span class="v">176</span></td><td><span class="v">249</span></td><td><span class="v">425</span></td></tr>
+    <tr><th class="l">Final score</th><td><span class="v">118</span></td><td><span class="v">66</span></td><td><span class="v">184</span></td></tr>
+    <tr><th class="l">Sten score</th><td><span class="v">6</span></td><td><span class="v">5</span></td><td><span class="v">6</span></td></tr>
+    <tr><th class="l">Percentile</th><td><span class="v">55</span></td><td><span class="v">42</span></td><td><span class="v">52</span></td></tr>
+  </table></div>
+
+  <div class="sec" style="--col:var(--c-epq)">EPQ</div>
+  <div class="tbl wide"><table><caption>Table 1. Shows the individual scores on 4 areas of EPQ</caption><tr><th rowspan="2">Name</th><th colspan="4">Psychoticism</th><th colspan="4">Extraversion</th><th colspan="4">Neuroticism</th><th colspan="4">Lie score</th></tr><tr><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th></tr><tr><td>S1</td><td><span class="v">1</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">18</span></td><td><span class="v">8</span></td><td><span class="v">89.4</span></td><td><span class="v">High</span></td><td><span class="v">9</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">7</span></td><td><span class="v">5</span></td><td><span class="v">40.1</span></td><td><span class="v">Avg</span></td></tr></table></div>
+  <div class="tbl wide"><table><caption>Table 2. Shows group data on EPQ</caption><tr><th rowspan="2">Sl. no.</th><th rowspan="2">Subject</th><th colspan="4">Psychoticism</th><th colspan="4">Extraversion</th><th colspan="4">Neuroticism</th><th colspan="4">Lie score</th></tr><tr><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th><th>Raw</th><th>Sten</th><th>Centile</th><th>Int.</th></tr><tr><td>1</td><td>S1</td><td><span class="v">1</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">18</span></td><td><span class="v">8</span></td><td><span class="v">89.4</span></td><td><span class="v">High</span></td><td><span class="v">9</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">7</span></td><td><span class="v">5</span></td><td><span class="v">40.1</span></td><td><span class="v">Avg</span></td></tr><tr><td>2</td><td>S2</td><td><span class="v">1</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">10</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">14</span></td><td><span class="v">6</span></td><td><span class="v">59.9</span></td><td><span class="v">Avg</span></td><td><span class="v">7</span></td><td><span class="v">5</span></td><td><span class="v">40.1</span></td><td><span class="v">Avg</span></td></tr><tr><td>3</td><td>S3</td><td><span class="v">4</span></td><td><span class="v">7</span></td><td><span class="v">77.3</span></td><td><span class="v">Avg</span></td><td><span class="v">16</span></td><td><span class="v">7</span></td><td><span class="v">77.3</span></td><td><span class="v">Avg</span></td><td><span class="v">9</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">9</span></td><td><span class="v">7</span></td><td><span class="v">77.3</span></td><td><span class="v">Avg</span></td></tr><tr><td>4</td><td>S4</td><td><span class="v">0</span></td><td><span class="v">—</span></td><td><span class="v">—</span></td><td><span class="v">—</span></td><td><span class="v">11</span></td><td><span class="v">5</span></td><td><span class="v">40.1</span></td><td><span class="v">Avg</span></td><td><span class="v">7</span></td><td><span class="v">3</span></td><td><span class="v">10.6</span></td><td><span class="v">Low</span></td><td><span class="v">6</span></td><td><span class="v">5</span></td><td><span class="v">40.1</span></td><td><span class="v">Avg</span></td></tr><tr><td>5</td><td>S5</td><td><span class="v">3</span></td><td><span class="v">6</span></td><td><span class="v">59.9</span></td><td><span class="v">Avg</span></td><td><span class="v">19</span></td><td><span class="v">8</span></td><td><span class="v">89.4</span></td><td><span class="v">High</span></td><td><span class="v">10</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">11</span></td><td><span class="v">7</span></td><td><span class="v">77.3</span></td><td><span class="v">Avg</span></td></tr><tr><td>6</td><td>S6</td><td><span class="v">5</span></td><td><span class="v">8</span></td><td><span class="v">89.4</span></td><td><span class="v">High</span></td><td><span class="v">8</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">15</span></td><td><span class="v">6</span></td><td><span class="v">59.9</span></td><td><span class="v">Avg</span></td><td><span class="v">12</span></td><td><span class="v">8</span></td><td><span class="v">89.4</span></td><td><span class="v">High</span></td></tr><tr><td>7</td><td>S7</td><td><span class="v">4</span></td><td><span class="v">7</span></td><td><span class="v">77.3</span></td><td><span class="v">Avg</span></td><td><span class="v">13</span></td><td><span class="v">6</span></td><td><span class="v">59.9</span></td><td><span class="v">Avg</span></td><td><span class="v">13</span></td><td><span class="v">6</span></td><td><span class="v">59.9</span></td><td><span class="v">Avg</span></td><td><span class="v">8</span></td><td><span class="v">6</span></td><td><span class="v">59.9</span></td><td><span class="v">Avg</span></td></tr><tr><td>8</td><td>S8</td><td><span class="v">1</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">4</span></td><td><span class="v">2</span></td><td><span class="v">4</span></td><td><span class="v">Low</span></td><td><span class="v">3</span></td><td><span class="v">2</span></td><td><span class="v">4</span></td><td><span class="v">Low</span></td><td><span class="v">13</span></td><td><span class="v">8</span></td><td><span class="v">89.4</span></td><td><span class="v">High</span></td></tr><tr><td>9</td><td>S9</td><td><span class="v">4</span></td><td><span class="v">7</span></td><td><span class="v">77.3</span></td><td><span class="v">Avg</span></td><td><span class="v">18</span></td><td><span class="v">8</span></td><td><span class="v">89.4</span></td><td><span class="v">High</span></td><td><span class="v">11</span></td><td><span class="v">5</span></td><td><span class="v">40.1</span></td><td><span class="v">Avg</span></td><td><span class="v">9</span></td><td><span class="v">7</span></td><td><span class="v">77.3</span></td><td><span class="v">Avg</span></td></tr><tr><td>10</td><td>S10</td><td><span class="v">0</span></td><td><span class="v">—</span></td><td><span class="v">—</span></td><td><span class="v">—</span></td><td><span class="v">10</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">9</span></td><td><span class="v">4</span></td><td><span class="v">22.7</span></td><td><span class="v">Avg</span></td><td><span class="v">7</span></td><td><span class="v">5</span></td><td><span class="v">40.1</span></td><td><span class="v">Avg</span></td></tr><tr class="sum"><td colspan="2">Total</td><td><span class="v">23</span></td><td></td><td></td><td></td><td><span class="v">127</span></td><td></td><td></td><td></td><td><span class="v">100</span></td><td></td><td></td><td></td><td><span class="v">89</span></td><td></td><td></td><td></td></tr><tr class="sum"><td colspan="2">Mean</td><td><span class="v">2.3</span></td><td><span class="v">4.7</span></td><td><span class="v">34.5</span></td><td><span class="v">Avg</span></td><td><span class="v">12.7</span></td><td><span class="v">5.6</span></td><td><span class="v">52</span></td><td><span class="v">Avg</span></td><td><span class="v">10.0</span></td><td><span class="v">4.4</span></td><td><span class="v">29.1</span></td><td><span class="v">Avg</span></td><td><span class="v">8.9</span></td><td><span class="v">6.3</span></td><td><span class="v">65.5</span></td><td><span class="v">Avg</span></td></tr></table></div>
+  <p class="muted">Group: add one row per subject. Total = sum of raw scores. Mean raw = total ÷ n. Mean sten = sum of stens ÷ n. Group centile comes from the mean sten. Int. is Low, Avg or High. For a raw psychoticism score of 0, write a dash for sten, centile and interpretation.</p>
+  </div>
+</section>
+
+<!-- ============ MEGA TABLE ============ -->
+<section class="sheet" id="mega" hidden>
+  <h2>Mega table</h2>
+  <p>All three experiments side by side, from aim to scoring and on to discussion. Scroll sideways on a phone. The first column stays in view.</p>
+  <div class="tbl wide mega"><table>
+    <tr><th class="l">Stage</th><th class="l" style="--col:var(--c-pgi)">PGIMS</th><th class="l" style="--col:var(--c-ppsi)">PPSI</th><th class="l" style="--col:var(--c-epq)">EPQ</th></tr>
+    <tr><th class="l">Full name</th><td class="l">PGI Memory Scale, a sub-test of the PGI Battery of Brain Dysfunction (PGIMER, Chandigarh)</td><td class="l">Psycho-Physiological State Inventory by Sanjay Vohra</td><td class="l">Eysenck's Personality Questionnaire by H.J. Eysenck and Sybil B.G. Eysenck (developed from the MPI)</td></tr><tr><th class="l">Measures</th><td class="l">Memory, in 10 sub-tests: remote, recent, mental balance, attention and concentration, delayed recall, immediate recall, similar pairs, dissimilar pairs, visual retention, recognition</td><td class="l">Part I physiological dysfunction, Part II psychological dysfunction (psychoneurotic tendencies)</td><td class="l">Psychoticism, extraversion-introversion, neuroticism-stability, and a lie scale for social desirability</td></tr><tr><th class="l">Aim</th><td class="l">To assess the level of dysfunction in the subject using the PGI Memory Scale sub-test of the PGI Battery of Brain Dysfunction.</td><td class="l">To assess the presence of psychological or physiological dysfunction in the subject.</td><td class="l">To assess the personality dimensions of the subject using Eysenck's Personality Questionnaire.</td></tr><tr><th class="l">Plan</th><td class="l">Administer the PGIMS, score it, and interpret the level of dysfunction using the scoring key and norms.</td><td class="l">-</td><td class="l">Administer the EPQ and obtain scores on its dimensions. High scores in certain dimensions require counselling.</td></tr><tr><th class="l">Materials</th><td class="l">Memory proforma with items for 10 sub-tests; 5 visual retention cards; 2 cards (10 objects, 20 objects) for recognition; stop-clock</td><td class="l">PPSI booklet; writing materials; manual; norms</td><td class="l">EPQ-R with 90 items (24 P, 21 E, 24 N, 21 L); scoring key; stencil; norms; writing materials</td></tr><tr><th class="l">Procedure</th><td class="l">Present sub-tests I to X one by one with clear instructions, following the hints in the test blanks. About 15 to 20 minutes. Special care: the first 2 sub-tests, rate of presentation (IV, V, VII, VIII), and the interval before recall. Score and interpret with norms</td><td class="l">Give the inventory; the subject reads the items carefully and picks one of four alternatives for Part I and Part II. About 20 minutes. Scored and interpreted later</td><td class="l">-</td></tr><tr><th class="l">Instructions (key phrases)</th><td class="l">Ten short scripts, for example: "I am going to call out sets of numbers, listen to them carefully and repeat them..." (IV); "I will show you a card containing pictures of many objects..." (X)</td><td class="l">"Read each statement carefully and select responses from... 'Often', 'Sometimes', 'Seldom' and 'Never'. Select only one. There is no right or wrong answer."</td><td class="l">"After each question... options 'YES' or 'NO'. Read each question carefully... Do not spend too much time on any one question and give your first response.". For literates the instructions are printed on the form; for an illiterate subject the items are read out and answers recorded. Work as quickly as possible, answer all, confidentiality assured. Booklet taken back and scored</td></tr><tr><th class="l">Recording of data</th><td class="l">-</td><td class="l">-</td><td class="l">Identifying data and reasons for referral are noted. In clinical situations, behavioural observations about the subject's approach to the test are noted</td></tr><tr><th class="l">Scoring steps</th><td class="l">1 Score with key and manual. 2 Add total per sub-test. 3 Convert to converted score using education-level norms (0 to 5, 6 to 9, 10+ years). 4 Convert to dysfunction rating. 5 Add ratings</td><td class="l">1 Score with stencils, add weights (no number = 0). 2 Part I, Part II and total raw. 3 Subtract 176 (Part I), 249 (Part II), 425 (total). 4 Convert final scores to sten and percentile</td><td class="l">1 Score with key. 2 Count scored items for P, E, N, L separately. 3 Convert raw to sten and centile from norms. 4 Read the band</td></tr><tr><th class="l">Score chain</th><td class="l">Raw → converted score → dysfunction rating (max 3 per sub-test, 30 in all)</td><td class="l">Raw → minus constant → final score → sten → percentile</td><td class="l">Raw → sten → centile → Low / Average / High</td></tr><tr><th class="l">Interpretation</th><td class="l">Converted 0 to 2 = rating 3; 3 to 4 = rating 2; 5+ = rating 0 (no dysfunction)</td><td class="l">CSS = 4. Sten below 4 is a serious case, refer to a clinician. Lower sten and percentile mean more dysfunction</td><td class="l">Sten 1 to 3 Low, 4 to 7 Average, 8 to 10 High. Raw psychoticism 0 has no sten. Lie scale average = answers at face value; high = social desirability may have influenced them</td></tr><tr><th class="l">Table format</th><td class="l">Sub-tests I to X across; rows Raw scores, Converted scores, Dysfunction rating, Interpretation (NO or YES); Total column</td><td class="l">Columns Part I, Part II, Total; rows Raw score, Constant (subtract), Final score, Sten score, Percentile</td><td class="l">Two-level header: Psychoticism, Extraversion, Neuroticism, Lie score, each with Raw, Sten, Centile, Int. Group table adds Sl. no., Subject, Total and Mean rows</td></tr><tr><th class="l">Individual discussion</th><td class="l">Go sub-test by sub-test (a to i): what the subject did, raw score, converted score, "indicating no dysfunction" or "dysfunction with respect to..."; total rating out of 30</td><td class="l">Part I, Part II, Overall: raw, final, sten vs CSS, percentile in 100 people (100 − P less, P − 1 more); compare parts, lower sten = more dysfunction</td><td class="l">Area by area (a to d): raw, sten, band, centile in 100 people (about C lower, 99 − C higher); lie score caution</td></tr><tr><th class="l">Group discussion</th><td class="l">-</td><td class="l">-</td><td class="l">Total, mean, sten, centile and band per area; individual differences by subject code; group lie score</td></tr><tr><th class="l">Conclusion pattern</th><td class="l">Subject shows (or does not show) dysfunction in named sub-tests of the Memory Scale</td><td class="l">Subject experiences more psychological or physiological dysfunction; does or does not need professional help</td><td class="l">Subject is Average, High or Low on each dimension, lie score influence, group average, individual differences exist</td></tr>
+  </table></div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var ids=['overview','pgims','ppsi','epq','verbal','viva','discussion','tables','mega'];
+  var sheets=ids.map(function(i){return document.getElementById(i)});
+  var tabs=[].slice.call(document.querySelectorAll('#tabs a'));
+  function show(){
+    var h=(location.hash||'').replace('#','');
+    if(ids.indexOf(h)<0) h='overview';
+    sheets.forEach(function(s){s.hidden=s.id!==h});
+    tabs.forEach(function(a){
+      if(a.getAttribute('href')==='#'+h){a.setAttribute('aria-current','page');a.scrollIntoView({block:'nearest',inline:'center'})}
+      else a.removeAttribute('aria-current');
+    });
+    try{window.scrollTo(0,0)}catch(e){}
+  }
+  window.addEventListener('hashchange',show); show();
+  try{
+    var now=new Date(), t0=new Date(now.getFullYear(),now.getMonth(),now.getDate()), ex=new Date(2026,10,2);
+    var d=Math.round((ex-t0)/864e5), el=document.getElementById('cd'), sub=document.getElementById('cdsub');
+    if(d>1){el.textContent=d+' days'; sub.textContent='until the Bio Psy practical'}
+    else if(d===1){el.textContent='Tomorrow'; sub.textContent='Monday 2 November'}
+    else if(d===0){el.textContent='Today'; sub.textContent='Good luck'}
+    else{el.textContent='Done'; sub.textContent='Bio Psy practical was on 2 November'}
+  }catch(e){}
+  var tb=document.getElementById('toggleAll'), open=false;
+  tb.addEventListener('click',function(){
+    open=!open;
+    [].slice.call(document.querySelectorAll('#viva details')).forEach(function(d){d.open=open});
+    tb.textContent=open?'Close all':'Open all';
+  });
+  document.getElementById('prac').addEventListener('change',function(e){
+    document.getElementById('tabarea').classList.toggle('hide',e.target.checked);
+  });
+})();
+</script>
+
+</body></html>
